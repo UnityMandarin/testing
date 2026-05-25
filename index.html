@@ -7,114 +7,252 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        /* Base Styling */
+        /* Premium Global Reset & Typography */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+        
         body {
-            font-family: 'Times New Roman', Times, serif;
-            background-color: #fcf9f2;
-            color: #333;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #fbf8f2;
+            color: #2b2b2b;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-image: linear-gradient(to right, rgba(244,233,211,0.4), rgba(255,255,255,0), rgba(244,233,211,0.4));
+            /* High-quality multi-layered silk background simulation */
+            background-image: 
+                radial-gradient(circle at 0% 50%, rgba(238, 224, 198, 0.45), transparent 40%),
+                radial-gradient(circle at 100% 50%, rgba(238, 224, 198, 0.45), transparent 40%),
+                linear-gradient(to bottom, #fdfbfa, #f6f0e2);
+            background-attachment: fixed;
+            overflow-x: hidden;
         }
 
-        /* Main Container */
+        /* Content Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 24px;
             flex: 1;
             text-align: center;
         }
 
-        /* Header Title */
+        /* Premium Heading */
         h1 {
-            color: #5c0612; /* Deep Red/Burgundy */
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            color: #5c0612; /* Deep Imperial Burgundy */
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .divider {
-            width: 150px;
-            height: 2px;
-            background-color: #bfa15f; /* Gold accent line */
-            margin: 0 auto 50px auto;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
-        /* Cards Grid */
+        .divider-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+        
+        .divider-line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #bfa15f, transparent);
+        }
+
+        .divider-diamond {
+            width: 8px;
+            height: 8px;
+            background-color: #bfa15f;
+            transform: rotate(45deg);
+        }
+
+        /* Grid Layout */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: start;
         }
 
-        /* Individual Feature Card */
+        /* High-Quality Card Design with Traditional Corner Framing */
         .card {
             background: #ffffff;
-            border: 3px double #bfa15f; /* Elegant traditional double border */
-            padding: 20px;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
+            border: 1px solid #ebdcb9;
+            padding: 30px 24px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(92, 6, 18, 0.03), 0 1px 3px rgba(0,0,0,0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Image Frame */
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(92, 6, 18, 0.08);
+            border-color: #bfa15f;
+        }
+
+        /* Ornate Asian Corner Accents (Pure CSS) */
+        .card::before, .card::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
+        }
+        /* Top Left and Bottom Right Brackets */
+        .card::before {
+            top: 10px;
+            left: 10px;
+            border-top: 2px solid #bfa15f;
+            border-left: 2px solid #bfa15f;
+        }
+        .card::after {
+            bottom: 10px;
+            right: 10px;
+            border-bottom: 2px solid #bfa15f;
+            border-right: 2px solid #bfa15f;
+        }
+
+        /* Additional Corner Elements for a true interlocking look */
+        .card-inner-frame::before, .card-inner-frame::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
+        }
+        .card-inner-frame::before {
+            top: 10px;
+            right: 10px;
+            border-top: 2px solid #bfa15f;
+            border-right: 2px solid #bfa15f;
+        }
+        .card-inner-frame::after {
+            bottom: 10px;
+            left: 10px;
+            border-bottom: 2px solid #bfa15f;
+            border-left: 2px solid #bfa15f;
+        }
+
+        /* Image Display Frame */
         .image-container {
             width: 100%;
-            height: 220px;
+            height: 230px;
             overflow: hidden;
-            border: 1px solid #bfa15f;
-            margin-bottom: 20px;
+            border: 1px solid #ebdcb9;
+            margin-bottom: 24px;
+            position: relative;
+            background-color: #fdfbfa;
         }
+        
         .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
-        /* Card Text styling */
+        .card:hover .image-container img {
+            transform: scale(1.04);
+        }
+
+        /* Card Content Styling */
         .card h2 {
             color: #5c0612;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
+            font-size: 1.45rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
-        .card p {
-            font-family: Arial, sans-serif; /* Clean, modern readable font for description */
+
+        .card p.intro-text {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             font-size: 0.95rem;
             line-height: 1.6;
-            color: #555;
+            color: #555555;
             text-align: justify;
+            margin-bottom: 15px;
         }
 
-        /* Sub-banner ribbon */
-        .ribbon {
-            background-color: #1a2e40; /* Dark Blue Banner */
-            color: #bfa15f;
-            padding: 15px;
-            font-size: 1.3rem;
-            letter-spacing: 3px;
+        /* Interactive Expanded Content Panel */
+        .more-info {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            opacity: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #666666;
+            text-align: justify;
+            border-top: 1px dashed #ebdcb9;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        /* Active expanded state class */
+        .card.expanded .more-info {
+            max-height: 250px; /* Provides plenty of room for expanded text */
+            opacity: 1;
+            padding-top: 15px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Premium "Learn More" Interactive Buttons */
+        .learn-more-btn {
+            background: transparent;
+            border: 1px solid #bfa15f;
+            color: #5c0612;
+            padding: 10px 24px;
+            font-family: 'Georgia', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-top: 20px;
+            cursor: pointer;
+            margin-top: auto;
+            align-self: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Navigation Footer */
-        footer {
-            background-color: #0f1c26; /* Darker navy accent */
-            padding: 20px;
-            font-family: Arial, sans-serif;
+        .learn-more-btn:hover {
+            background-color: #5c0612;
+            border-color: #5c0612;
+            color: #ffffff;
         }
+
+        /* Elegant Commitment Ribbon */
+        .ribbon {
+            background: linear-gradient(135deg, #162636, #1a2e40); /* Premium Midnight Silk Blue */
+            color: #e6c687;
+            padding: 18px;
+            font-size: 1.25rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(230, 198, 135, 0.2);
+            position: relative;
+        }
+
+        /* Luxury Footer Configuration */
+        footer {
+            background-color: #0b141c;
+            padding: 30px 20px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            border-top: 2px solid #bfa15f;
+        }
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -122,49 +260,90 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            color: #bfa15f;
-            font-size: 0.9rem;
+            color: #a49068;
+            font-size: 0.88rem;
+            gap: 20px;
         }
+
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
-            margin-right: 20px;
-            transition: color 0.2s;
+            margin-right: 25px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
         }
+
         .nav-links a:hover {
-            color: #bfa15f;
+            color: #e6c687;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>WHY UNITY MANDARIN?</h1>
-        <div class="divider"></div>
+        <h1>Why Unity Mandarin?</h1>
+        <div class="divider-container">
+            <div class="divider-line"></div>
+            <div class="divider-diamond"></div>
+            <div class="divider-line"></div>
+        </div>
 
         <div class="grid">
             <div class="card">
+                <div class="card-inner-frame"></div>
                 <div class="image-container">
                     <img src="cultural-immersion.jpg" alt="Cultural Immersion">
                 </div>
                 <h2>Cultural Immersion</h2>
-                <p>Beyond language, experience culture. Our curriculum integrates authentic cultural workshops, from calligraphy to tea ceremonies, bringing the language to life.</p>
+                <p class="intro-text">Beyond language, experience culture. Our curriculum integrates authentic cultural workshops, from calligraphy to tea ceremonies, bringing the language to life.</p>
+                
+                <div class="more-info">
+                    We believe true fluency requires context. Our immersive track allows you to practice conversational skills while handling authentic brushes, tasting regional teas, and discussing classical history with native experts. This method contextualizes your vocabulary and accelerates intuitive retention.
+                </div>
+                
+                <button class="learn-more-btn" onclick="toggleCard(this)">Learn More</button>
             </div>
 
             <div class="card">
+                <div class="card-inner-frame"></div>
                 <div class="image-container">
                     <img src="personalized-learning.jpg" alt="Personalized Learning">
                 </div>
                 <h2>Personalized Learning</h2>
-                <p>Your goals are unique. We offer tailored lesson plans, small class sizes, and dedicated tutors who adapt to your specific learning style and pace.</p>
+                <p class="intro-text">Your goals are unique. We offer tailored lesson plans, small class sizes, and dedicated tutors who adapt to your specific learning style and pace.</p>
+                
+                <div class="more-info">
+                    Whether you are targeting professional business proficiency, preparing for standardized HSK exams, or learning conversational structures for travel, your schedule adapts around you. We monitor personal learning metrics to adjust review pacing, keeping curriculum highly effective.
+                </div>
+                
+                <button class="learn-more-btn" onclick="toggleCard(this)">Learn More</button>
             </div>
 
             <div class="card">
+                <div class="card-inner-frame"></div>
                 <div class="image-container">
                     <img src="expert-instructors.jpg" alt="Expert Instructors">
                 </div>
                 <h2>Expert Instructors</h2>
-                <p>Learn from the best. Our certified native-speaking teachers bring years of expertise and a passion for teaching, ensuring high-quality education and support.</p>
+                <p class="intro-text">Learn from the best. Our certified native-speaking teachers bring years of expertise and a passion for teaching, ensuring high-quality education and support.</p>
+                
+                <div class="more-info">
+                    Our instructors hold advanced credentials in Linguistics and Language Pedagogy. Possessing extensive international field experience, they understand how to bridge communication barriers, dismantle complex pitch accent patterns, and render tonal mastery accessible to non-native speakers.
+                </div>
+                
+                <button class="learn-more-btn" onclick="toggleCard(this)">Learn More</button>
             </div>
         </div>
 
@@ -182,10 +361,28 @@
                 <a href="success.html">Success</a>
             </div>
             <div>
-                &copy; 2026 Unity Mandarin
+                &copy; 2026 Unity Mandarin. All Rights Reserved.
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleCard(button) {
+            const card = button.parentElement;
+            
+            // Toggle the 'expanded' style rules
+            card.classList.toggle('expanded');
+            
+            // Alter button text labels dynamically based on state
+            if (card.classList.contains('expanded')) {
+                button.textContent = "Close Details";
+                // Smooth scroll view into position if opened on small dynamic mobile displays
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                button.textContent = "Learn More";
+            }
+        }
+    </script>
 
 </body>
 </html>
