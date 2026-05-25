@@ -6,15 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unity Mandarin Center</title>
     <style>
-        /* --- HIGH-TECH DESIGN SYSTEM --- */
+        /* --- GLOBAL BRAND STYLES --- */
         :root {
-            --brand-orange: #FF5722;
-            --brand-orange-glow: rgba(255, 87, 34, 0.25);
-            --mint-bg: #E3FBEA;          /* Crisp, bright tech-mint canvas */
-            --mint-accent: #A6EBC5;      /* Tech neon-mint highlights */
-            --text-main: #0B1E14;        /* Deep cyberpunk obsidian */
-            --glass-card: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(166, 235, 197, 0.4);
+            --brand-orange: #FF5722; 
+            --mint-bg: #E8F8EE; /* Soft, pleasing mint-green tint canvas */
+            --mint-dark: #A3E2B8; /* Coordinating deeper mint tone */
+            --text-dark: #2C3E35; /* Crisp charcoal for readability */
         }
 
         * {
@@ -24,244 +21,202 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: var(--text-main);
-            background-color: var(--mint-bg);
-            min-height: 100vh;
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            color: #1a1a1a;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
+            
+            /* Premium canvas background: a pleasing mint-cream ivory tint */
+            background-color: #fdfaf2;
+            
+            /* NEW: Soft gradient backdrop that makes content pop, replacing harsh lines */
+            background-image: 
+                radial-gradient(circle at 50% 30%, 
+                    #ffffff 0%, 
+                    rgba(232, 248, 238, 0.4) 50%, 
+                    rgba(253, 250, 242, 0) 80%
+                );
+
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
         }
 
-        /* --- TECH GRADIENT BACKDROP SHAPES --- */
-        .tech-bg-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 87, 34, 0.15) 0%, rgba(255,255,255,0) 70%);
-            top: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .tech-grid-overlay {
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(rgba(11, 30, 20, 0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(11, 30, 20, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* --- GLASSMORPHIC NAV BAR --- */
+        /* --- NAVIGATION HEADER --- */
         header {
-            position: sticky;
-            top: 0;
-            background: rgba(227, 251, 234, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(166, 235, 197, 0.3);
-            z-index: 100;
-            padding: 16px 40px;
+            background-color: var(--mint-bg); 
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 15px rgba(163, 226, 184, 0.1);
+            z-index: 10;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
-        .logo-badge {
-            background: linear-gradient(135deg, var(--brand-orange), #FF8A65);
+        /* Placeholder logo (in case logo.png fails) */
+        .logo-fallback {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            background-color: var(--brand-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
-            padding: 6px 14px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px var(--brand-orange-glow);
-            letter-spacing: 0.5px;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
         }
 
         .logo-text {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-        }
-
-        nav {
-            display: flex;
-            gap: 8px;
-            background: rgba(11, 30, 20, 0.04);
-            padding: 4px;
-            border-radius: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--brand-orange);
         }
 
         nav a {
+            margin-left: 25px;
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.82rem;
-            padding: 8px 16px;
-            border-radius: 16px;
-            transition: all 0.25s ease;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
-        nav a:hover, nav a.active {
-            background: white;
+        nav a:hover {
             color: var(--brand-orange);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
         }
 
-        /* --- ULTRA-MODERN HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero {
-            position: relative;
-            z-index: 10;
             text-align: center;
-            padding: 100px 24px 80px 24px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            border: 1px solid var(--mint-accent);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--brand-orange);
-            margin-bottom: 24px;
-            box-shadow: 0 4px 10px rgba(166, 235, 197, 0.2);
-        }
-
-        .hero-pill .dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--brand-orange);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 87, 34, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+            padding: 80px 20px 60px 20px;
+            background-color: transparent; /* Made transparent to show studio backdrop */
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 4.8rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            color: var(--text-main);
-            margin-bottom: 24px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(to right, var(--brand-orange), #FF7043);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 52px;
+            margin-bottom: 15px;
+            color: var(--brand-orange); 
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            color: #4A5E53;
-            max-width: 600px;
+            font-size: 19px;
+            max-width: 650px;
             margin: 0 auto 35px auto;
+            color: #5a6e61;
+            font-family: 'Georgia', serif;
+            font-style: italic;
             line-height: 1.6;
-            font-weight: 400;
         }
 
         .cta-button {
-            background: var(--text-main);
+            background-color: var(--brand-orange); 
             color: white;
-            padding: 14px 36px;
-            border-radius: 12px;
+            padding: 12px 30px;
+            border-radius: 25px;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 25px rgba(11, 30, 20, 0.15);
+            font-size: 18px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            transition: transform 0.2s, background-color 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
         }
 
         .cta-button:hover {
-            background: var(--brand-orange);
+            background-color: #e64a19; 
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px var(--brand-orange-glow);
         }
 
-        /* --- TECH BENTO GRID ARCHITECTURE --- */
+        /* --- OUR APPROACH SECTION --- */
         .approach-section {
-            position: relative;
-            z-index: 10;
-            padding: 60px 40px 100px 40px;
-            max-width: 1200px;
+            padding: 40px 40px 80px 40px;
+            max-width: 1260px;
             margin: 0 auto;
+            z-index: 2;
         }
 
-        .section-header {
+        .approach-section > h2 {
             text-align: center;
-            margin-bottom: 60px;
+            font-size: 34px;
+            color: var(--brand-orange); 
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+        .title-divider {
+            width: 120px;
+            height: 3px;
+            background-color: var(--mint-dark);
+            margin: 0 auto 45px auto;
+            border-radius: 2px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
         }
 
-        /* Futuristic Glass Cards */
+        /* PREMIUM SCROLL DESIGN CARDS */
         .card {
-            background: var(--glass-card);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
+            background-color: #ffffff;
+            border: 1px solid rgba(163, 226, 184, 0.25);
+            padding: 24px 20px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(44, 62, 53, 0.05);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* NEW: Orange accent boundary at the top of cards */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: var(--brand-orange);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.95);
-            border-color: var(--brand-orange);
-            box-shadow: 0 20px 40px rgba(11, 30, 20, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 62, 53, 0.1);
         }
 
-        .image-container {
+        /* Fixed container handle images beautifully, even when missing */
+        .image-wrapper {
             width: 100%;
-            height: 180px;
-            border-radius: 12px;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            background-color: #f4f9f5;
             overflow: hidden;
-            background-color: rgba(166, 235, 197, 0.2);
-            margin-bottom: 20px;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(163, 226, 184, 0.15);
         }
 
         .card img {
@@ -270,246 +225,206 @@
             object-fit: cover;
         }
 
-        /* Simulated tech UI code overlay line on top of image frame */
-        .image-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--brand-orange), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .image-container::after {
-            opacity: 1;
-        }
-
+        /* Card Content Headings */
         .card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
+            color: var(--text-dark); 
+            font-size: 1.4rem;
+            font-weight: 500;
             margin-bottom: 10px;
-            letter-spacing: -0.3px;
+            font-family: 'Georgia', serif;
         }
 
         .card p.intro-text {
+            font-family: Arial, sans-serif;
             font-size: 0.9rem;
             line-height: 1.5;
-            color: #4A5E53;
-            margin-bottom: 24px;
+            color: #55665c;
+            margin-bottom: 20px;
+            padding: 0 4px;
         }
 
-        /* Expandable technical details modules */
+        /* Hidden Content Modules */
         .more-info {
             display: none;
-            border-top: 1px solid rgba(166, 235, 197, 0.4);
+            text-align: left;
+            border-top: 1px dashed rgba(163, 226, 184, 0.4);
             padding-top: 16px;
             margin-bottom: 20px;
         }
 
         .card ul {
-            list-style: none;
+            text-align: left;
+            padding-left: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+            color: #444444;
         }
 
         .card li {
-            font-size: 0.85rem;
+            margin-bottom: 10px;
             line-height: 1.5;
-            color: #2D3E35;
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 18px;
         }
 
-        /* High-tech arrow terminal indicator lists */
-        .card li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--brand-orange);
-            font-weight: bold;
-        }
-
+        /* Elegant "Learn More" Interactive Buttons */
         .learn-more-btn {
-            background: white;
-            border: 1px solid rgba(11, 30, 20, 0.1);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            background-color: transparent;
+            border: 1px solid var(--mint-dark);
+            color: var(--text-dark); 
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
-            align-self: flex-start;
             margin-top: auto;
+            align-self: center;
+            z-index: 5;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .learn-more-btn:hover {
-            border-color: var(--text-main);
-            background: var(--text-main);
-            color: white;
+            background-color: var(--brand-orange);
+            border-color: var(--brand-orange);
+            color: #ffffff;
         }
 
-        /* --- THE SUB-FOOTER STRIP --- */
-        .commitment-banner {
-            background: var(--text-main);
-            color: white;
-            padding: 30px;
+        /* Commit Banner */
+        .commitment-ribbon {
+            background: linear-gradient(to right, #1E3529, #122218);
+            color: var(--mint-bg);
+            padding: 18px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 25px;
             text-align: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.2px;
-            position: relative;
-            z-index: 10;
+            box-shadow: 0 10px 25px rgba(18, 34, 24, 0.15);
         }
 
-        /* --- MODERN MINIMALIST FOOTER --- */
+        /* --- FOOTER --- */
         footer {
-            background: #06120C;
-            color: rgba(255, 255, 255, 0.35);
-            padding: 30px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            position: relative;
-            z-index: 10;
+            background-color: #1E3529;
+            color: #a3bdae;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
         }
 
-        footer a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        footer a:hover {
-            color: white;
-        }
-
-        /* --- RESPONSIVE ADAPTATIONS --- */
-        @media (max-width: 960px) {
+        /* --- RESPONSIVE MOBILE ADJUSTMENTS --- */
+        @media (max-width: 800px) {
             .grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
             header {
-                padding: 16px 24px;
+                flex-direction: column;
+                gap: 15px;
             }
-            .approach-section {
-                padding: 40px 24px;
+            .hero h1 {
+                font-size: 38px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="tech-bg-glow"></div>
-    <div class="tech-grid-overlay"></div>
-
     <header>
-        <a href="#" class="logo-container">
-            <div class="logo-badge">同心</div>
+        <a href="#" class="logo-container" style="text-decoration: none;">
+            <div class="logo-fallback">U</div>
             <span class="logo-text">Unity Mandarin Center</span>
         </a>
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#">About</a>
-            <a href="#">Programs</a>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Our Programs</a>
             <a href="#">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-pill">
-            <span class="dot"></span> Next-Gen Immersion Architecture
-        </div>
-        <h1>Empowering Growth Through <span>Language Coding</span></h1>
-        <p>A precision language acquisition workspace bringing dynamic immersion frameworks, core curriculum syncing, and rich heritage exploration blueprints together into high-performance pathways.</p>
-        <a href="#" class="cta-button">
-            Enroll Now 
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <h1>Welcome to Unity Mandarin Center</h1>
+        <p>Empowering children through language, academic support, and vibrant cultural exploration.</p>
+        <a href="#" class="cta-button">Enroll Today</a>
     </section>
 
     <section class="approach-section">
-        <div class="section-header">
-            <h2>The Structural Modules</h2>
-        </div>
+        <h2>Our Approach</h2>
+        <div class="title-divider"></div>
         
         <div class="grid">
             <div class="card">
-                <div class="image-container">
-                    <img src="linguistic.jpg" alt="Linguistic Immersion" onerror="this.style.display='none';">
+                <div class="image-wrapper">
+                    <img src="linguistic.jpg" alt="Linguistic Immersion" onerror="this.style.display='none'; this.parentNode.innerText='Missing: linguistic.jpg';">
                 </div>
                 <h3>Linguistic Immersion</h3>
-                <p class="intro-text">Moving past rigid legacy memorization matrices into native conversational fluency deployment environments built for organic development.</p>
+                <p class="intro-text">Language is best learned when it is lived. Instead of rigid memorization and grammar drills, we focus on natural acquisition in a supportive, fully immersive environment.</p>
                 
                 <div class="more-info" id="info1">
                     <ul>
-                        <li><strong>Dynamic Scaffolding:</strong> Fluid conversation simulations designed around interactive logic targets.</li>
-                        <li><strong>Contextual Engineering:</strong> Deep integration rules mapping language keys cleanly into natural routine timelines.</li>
+                        <li><strong>Interactive Learning:</strong> Building fluency through structured exploration, conversations, and group games.</li>
+                        <li><strong>Real-World Context:</strong> Integrating Mandarin into daily routines to make learning practical and engaging.</li>
+                        <li><strong>Confident Communication:</strong> Empowering children to speak, think, and express themselves naturally.</li>
                     </ul>
                 </div>
-                <button class="learn-more-btn" onclick="toggleCard('info1', this)">Expand Spec</button>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info1', this)">Learn More</button>
             </div>
 
             <div class="card">
-                <div class="image-container">
-                    <img src="academic.jpg" alt="Academic Support" onerror="this.style.display='none';">
+                <div class="image-wrapper">
+                    <img src="academic.jpg" alt="Academic Support" onerror="this.style.display='none'; this.parentNode.innerText='Missing: academic.jpg';">
                 </div>
                 <h3>Academic Support</h3>
-                <p class="intro-text">Syncing multi-track school loads and target study lanes cleanly within quiet, highly optimized diagnostic processing spaces.</p>
+                <p class="intro-text">Balancing schoolwork and language learning can be challenging. We provide a dedicated, quiet environment where students can complete their homework with confidence.</p>
                 
                 <div class="more-info" id="info2">
                     <ul>
-                        <li><strong>Targeted Guidance:</strong> Expert educator oversight configuring core subjects for fast structural success paths.</li>
-                        <li><strong>Load Management:</strong> Drastically reducing downstream family friction during project operations.</li>
+                        <li><strong>Expert Guidance:</strong> Targeted assistance from experienced educators to help students master core subjects.</li>
+                        <li><strong>Stress Reduction:</strong> Minimizes after-school stress for families by managing curriculum needs during program hours.</li>
+                        <li><strong>Lifelong Habits:</strong> Fosters independent study skills that set children up for long-term academic success.</li>
                     </ul>
                 </div>
-                <button class="learn-more-btn" onclick="toggleCard('info2', this)">Expand Spec</button>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info2', this)">Learn More</button>
             </div>
 
             <div class="card">
-                <div class="image-container">
-                    <img src="cultural.jpg" alt="Cultural Creative" onerror="this.style.display='none';">
+                <div class="image-wrapper">
+                    <img src="cultural.jpg" alt="Cultural Creative" onerror="this.style.display='none'; this.parentNode.innerText='Missing: cultural.jpg';">
                 </div>
                 <h3>Cultural Creative</h3>
-                <p class="intro-text">Mapping historical perspective layers onto active vocal skills. We route heritage workflows directly through custom creative synthesis modules.</p>
+                <p class="intro-text">True fluency goes hand-in-hand with cultural understanding. We bring the vibrant traditions of the Chinese-speaking world to life by connecting language learning directly to creative expression.</p>
                 
                 <div class="more-info" id="info3">
                     <ul>
-                        <li><strong>Traditional Systems:</strong> Physical medium integration loops tracking calligraphy and historical painting arrays.</li>
-                        <li><strong>Global Horizons:</strong> High-level season milestone tracking providing scalable systemic analytical insight roots.</li>
+                        <li><strong>Traditional Arts:</strong> Hands-on exploration of rich history and heritage through calligraphy and brush painting.</li>
+                        <li><strong>Immersive Expression:</strong> Engaging students through traditional music, storytelling, and interactive arts.</li>
+                        <li><strong>Seasonal Celebrations:</strong> Participating in cultural holiday traditions to foster a lifelong global perspective and deeper appreciation.</li>
                     </ul>
                 </div>
-                <button class="learn-more-btn" onclick="toggleCard('info3', this)">Expand Spec</button>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info3', this)">Learn More</button>
             </div>
+        </div>
+
+        <div class="commitment-ribbon">
+            Our Commitment to Your Child's Success
         </div>
     </section>
 
-    <div class="commitment-banner">
-        // COMMITMENT TO YOUR CHILD'S SCALE SUCCESS METRICS
-    </div>
-
     <footer>
-        <div>&copy; 2026 Unity Mandarin Center. Engine Version 3.4.0</div>
-        <div>
-            <a href="#">Privacy Framework</a>
-            <a href="#">Terms of Architecture</a>
-        </div>
+        <p>&copy; 2026 Unity Mandarin Center. All rights reserved.</p>
     </footer>
 
     <script>
-        function toggleCard(infoId, button) {
+        function toggleHomeCard(infoId, button) {
             var infoPanel = document.getElementById(infoId);
             if (infoPanel.style.display === "none" || infoPanel.style.display === "") {
                 infoPanel.style.display = "block";
-                button.textContent = "Collapse Spec";
+                button.textContent = "Close Details";
             } else {
                 infoPanel.style.display = "none";
-                button.textContent = "Expand Spec";
+                button.textContent = "Learn More";
             }
         }
     </script>
