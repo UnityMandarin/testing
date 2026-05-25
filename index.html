@@ -4,18 +4,14 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unity Mandarin Center | Next-Gen Immersion Platform</title>
+    <title>Unity Mandarin Center</title>
     <style>
-        /* --- PREMIUM CYBER-OBSIDIAN DESIGN SYSTEM --- */
+        /* --- GLOBAL STYLES --- */
         :root {
-            --bg-main: #06090B;          /* Ultra-dark luxurious obsidian base */
-            --bg-surface: #0E1317;       /* Deep slate card surface */
-            --brand-orange: #FF5722;     /* Core hyper-vibrant signal orange */
-            --brand-glow: rgba(255, 87, 34, 0.25);
-            --mint-signal: #2EE59D;      /* Precise matrix green for highlights */
-            --text-primary: #F3F4F6;     /* Crisp off-white reading layer */
-            --text-secondary: #9CA3AF;   /* Muted tech gray for deep descriptions */
-            --border-glass: rgba(255, 255, 255, 0.05);
+            --brand-orange: #FF5722; 
+            --mint-green: #E8F8EE; /* Softened to a much more pleasing, premium mint pastel tint */
+            --mint-dark: #A3E2B8;
+            --text-dark: #2C3E35;
         }
 
         * {
@@ -25,884 +21,411 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--text-primary);
-            background-color: var(--bg-main);
-            min-height: 100vh;
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            color: #1a1a1a;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            min-height: 100vh;
             position: relative;
-            letter-spacing: -0.2px;
+            overflow-x: hidden;
+            
+            /* Pleasing, balanced mint-cream ivory background canvas */
+            background-color: #FAFCFA; 
+            
+            /* Soft, modern lighting glow instead of harsh lines */
+            background-image: 
+                radial-gradient(
+                    circle at 50% 30%, 
+                    #ffffff 0%, 
+                    rgba(232, 248, 238, 0.4) 50%, 
+                    rgba(250, 252, 250, 0) 80%
+                );
+
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
         }
 
-        /* --- AMBIENT TECH ATMOSPHERE SHAPES --- */
-        .ambient-glow-1 {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255, 87, 34, 0.06) 0%, rgba(0,0,0,0) 70%);
-            top: -200px;
-            left: 10%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .ambient-glow-2 {
-            position: absolute;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(46, 229, 157, 0.04) 0%, rgba(0,0,0,0) 70%);
-            top: 600px;
-            right: -100px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .tech-grid {
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: 2;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        /* --- HEADLESS NAVIGATION BAR --- */
+        /* --- NAVIGATION HEADER --- */
         header {
-            position: sticky;
-            top: 0;
-            background: rgba(6, 9, 11, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 100;
-            padding: 20px 60px;
+            background-color: var(--mint-green); 
+            padding: 18px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(163, 226, 184, 0.15);
+            z-index: 10;
+            border-bottom: 1px solid rgba(163, 226, 184, 0.3);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
-        .logo-symbol {
-            background: linear-gradient(135deg, var(--brand-orange), #FF7043);
-            color: white;
-            font-weight: 900;
-            font-size: 1.1rem;
-            width: 38px;
-            height: 38px;
+        /* Fixed broken logo replacement logic */
+        .logo-fallback {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            background-color: var(--brand-orange);
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            box-shadow: 0 0 20px var(--brand-glow);
+            color: white;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 2px 8px rgba(255, 87, 34, 0.2);
         }
 
         .logo-text {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.25s ease;
-        }
-
-        nav a:hover, nav a.active {
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+            font-weight: bold;
             color: var(--brand-orange);
         }
 
-        /* --- HERO HEADER SECTION --- */
-        .hero {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 140px 24px 100px 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        .status-pill .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--mint-signal);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--mint-signal);
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -3px;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-        }
-
-        .hero h1 span {
-            background: linear-gradient(120deg, var(--brand-orange) 30%, #FFA17A 90%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            color: var(--text-secondary);
-            max-width: 720px;
-            margin: 0 auto 45px auto;
-            line-height: 1.6;
-        }
-
-        .action-tray {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .btn {
-            padding: 16px 36px;
-            border-radius: 12px;
+        nav a {
+            margin-left: 25px;
             text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-family: Arial, sans-serif;
             font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: var(--brand-orange);
-            color: white;
-            box-shadow: 0 12px 30px var(--brand-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #FF6A3C;
-            box-shadow: 0 16px 35px rgba(255, 87, 34, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-primary);
-            border: 1px solid var(--border-glass);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* --- PERFORMANCE LIVE METRICS --- */
-        .metrics-bar {
-            position: relative;
-            z-index: 10;
-            max-width: 1100px;
-            margin: 0 auto 100px auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border-glass);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
-        .metric-tile {
-            background: var(--bg-surface);
-            padding: 30px;
-            text-align: center;
-        }
-
-        .metric-tile h4 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-        }
-
-        .metric-tile p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- CORE ARCHITECTURE BENTO GRID --- */
-        .section-wrap {
-            position: relative;
-            z-index: 10;
-            padding: 100px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .center-header {
-            text-align: center;
-            margin-bottom: 70px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .center-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .center-header p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.5;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .bento-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .bento-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            transform: translateY(-4px);
-        }
-
-        .img-frame {
-            width: 100%;
-            height: 190px;
-            border-radius: 14px;
-            overflow: hidden;
-            background: #151C21;
-            margin-bottom: 24px;
-        }
-
-        .img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .bento-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-        }
-
-        .bento-card p.summary {
-            font-size: 0.92rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .expand-area {
-            display: none;
-            border-top: 1px solid var(--border-glass);
-            padding-top: 20px;
-            margin-bottom: 24px;
-        }
-
-        .expand-area ul {
-            list-style: none;
-        }
-
-        .expand-area li {
-            font-size: 0.88rem;
-            color: #D1D5DB;
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .expand-area li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 6px;
-            height: 6px;
-            background: var(--brand-orange);
-            border-radius: 50%;
-        }
-
-        .spec-toggle-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-glass);
-            color: var(--text-primary);
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-            margin-top: auto;
-            transition: all 0.2s ease;
-        }
-
-        .spec-toggle-btn:hover {
-            background: var(--text-primary);
-            color: var(--bg-main);
-        }
-
-        /* --- FLUENCY TIMELINE PATHWAY --- */
-        .timeline-container {
-            position: relative;
-            padding-left: 30px;
-            max-width: 800px;
-            margin: 40px auto 0 auto;
-        }
-
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            bottom: 10px;
-            width: 2px;
-            background: var(--border-glass);
-        }
-
-        .timeline-step {
-            position: relative;
-            margin-bottom: 45px;
-        }
-
-        .timeline-step::before {
-            content: '';
-            position: absolute;
-            left: -35px;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--bg-main);
-            border: 3px solid var(--brand-orange);
-            box-shadow: 0 0 10px var(--brand-glow);
-        }
-
-        .timeline-step h4 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .timeline-step p {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* --- PLATFORM COMPARISON MATRIX --- */
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--bg-surface);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
-        .matrix-table th, .matrix-table td {
-            padding: 20px 24px;
-            text-align: left;
-            font-size: 0.92rem;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .matrix-table th {
-            background: rgba(255, 255, 255, 0.02);
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .matrix-table td:first-child {
-            font-weight: 600;
-        }
-
-        .matrix-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* --- DESIGNER FAQ ACCORDION --- */
-        .faq-box {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: 14px;
-            margin-bottom: 16px;
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
-
-        .faq-trigger {
-            width: 100%;
-            background: transparent;
-            border: none;
-            padding: 24px;
-            text-align: left;
-            color: var(--text-primary);
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-content {
-            display: none;
-            padding: 0 24px 24px 24px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        /* --- CONVERSION CONTAINER --- */
-        .cta-banner {
-            background: linear-gradient(135deg, #11161B 0%, #080B0D 100%);
-            border: 1px solid var(--border-glass);
-            border-radius: 32px;
-            padding: 80px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-        }
-
-        .cta-banner::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 87, 34, 0.1) 0%, rgba(0,0,0,0) 70%);
-            bottom: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-        }
-
-        .cta-banner h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .cta-banner p {
-            color: var(--text-secondary);
-            max-width: 550px;
-            margin: 0 auto 35px auto;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-
-        /* --- DEEP NETWORK FOOTER --- */
-        footer {
-            background: #030506;
-            border-top: 1px solid var(--border-glass);
-            padding: 80px 60px 40px 60px;
-            margin-top: auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr repeat(3, 1fr);
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto 60px auto;
-        }
-
-        .footer-brand p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 16px;
-            line-height: 1.5;
-            max-width: 260px;
-        }
-
-        .footer-col h5 {
-            color: var(--text-primary);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
             transition: color 0.2s ease;
         }
 
-        .footer-col a:hover {
-            color: white;
+        nav a:hover {
+            color: var(--brand-orange);
         }
 
-        .footer-bottom {
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 90px 20px 70px 20px;
+            background-color: transparent; 
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+            color: var(--brand-orange); 
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
+            color: #5a6e61;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+
+        .cta-button {
+            background-color: var(--brand-orange); 
+            color: white;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            display: inline-block;
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19; 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.4);
+        }
+
+        /* --- APPROACH SECTION --- */
+        .approach-section {
+            padding: 40px 40px 80px 40px;
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-glass);
+            z-index: 2;
+        }
+
+        .approach-section > h2 {
+            text-align: center;
+            font-size: 34px;
+            color: var(--brand-orange); 
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .title-divider {
+            width: 120px;
+            height: 3px;
+            background-color: var(--mint-dark);
+            margin: 0 auto 50px auto;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Premium Minimalist Card Design */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid rgba(163, 226, 184, 0.25);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(44, 62, 53, 0.04);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: var(--brand-orange);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(44, 62, 53, 0.09);
+            border-color: rgba(163, 226, 184, 0.6);
+        }
+
+        /* Clean Frame for Images */
+        .image-wrapper {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            background-color: #f4f9f5;
+            overflow: hidden;
+            display: flex;
             align-items: center;
-            font-size: 0.8rem;
-            color: #4B5563;
+            justify-content: center;
+            border: 1px solid rgba(163, 226, 184, 0.2);
         }
 
-        /* --- LAYOUT RESPONSIVENESS --- */
-        @media (max-width: 1024px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .metrics-bar { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr repeat(2, 1fr); }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @media (max-width: 640px) {
-            header { padding: 20px; }
-            .metrics-bar { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .action-tray { flex-direction: column; }
+        /* Card Text styling */
+        .card h3 {
+            color: var(--text-dark); 
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Georgia', serif;
+        }
+
+        .card p.intro-text {
+            font-family: Arial, sans-serif;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #55665c;
+            margin-bottom: 20px;
+        }
+
+        .more-info {
+            display: none;
+            text-align: left;
+            border-top: 1px dashed rgba(163, 226, 184, 0.5);
+            padding-top: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+            color: #4a5c51;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .learn-more-btn {
+            background-color: transparent;
+            border: 1px solid var(--mint-dark);
+            color: var(--text-dark); 
+            padding: 9px 24px;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
+            align-self: center;
+            transition: all 0.2s ease;
+        }
+
+        .learn-more-btn:hover {
+            background-color: var(--brand-orange);
+            border-color: var(--brand-orange);
+            color: #ffffff;
+        }
+
+        .commitment-ribbon {
+            background: linear-gradient(135deg, #1E3529, #122218);
+            color: #E8F8EE;
+            padding: 20px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(18, 34, 24, 0.15);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1E3529;
+            color: #a3bdae;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: auto;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(163, 226, 184, 0.1);
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 800px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
-    <div class="tech-grid"></div>
-
     <header>
         <a href="#" class="logo-container">
-            <div class="logo-symbol">同</div>
+            <div class="logo-fallback">U</div>
             <span class="logo-text">Unity Mandarin Center</span>
         </a>
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#">About</a>
-            <a href="#">Programs</a>
-            <a href="#">Infrastructure</a>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Our Programs</a>
             <a href="#">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="status-pill">
-            <span class="pulse-dot"></span> Active Immersion Deployment Fall 2026
-        </div>
-        <h1>Next-Gen Infrastructure For <span>Mandarin Acquisition</span></h1>
-        <p>A continuous high-performance language workspace integrating immersive physical environments, standardized academic metrics, and deep multi-generational cultural lineage keys.</p>
-        <div class="action-tray">
-            <a href="#" class="btn btn-primary">Initialize Enrollment</a>
-            <a href="#" class="btn btn-secondary">Explore Architecture</a>
-        </div>
+        <h1>Welcome to Unity Mandarin Center</h1>
+        <p>Empowering children through language, academic support, and vibrant cultural exploration.</p>
+        <a href="#" class="cta-button">Enroll Today</a>
     </section>
 
-    <div class="metrics-bar">
-        <div class="metric-tile">
-            <h4>100%</h4>
-            <p>Immersion Accuracy</p>
-        </div>
-        <div class="metric-tile">
-            <h4>4.9/5</h4>
-            <p>Parent Core Rating</p>
-        </div>
-        <div class="metric-tile">
-            <h4>1:6</h4>
-            <p>Instructor Ratio</p>
-        </div>
-        <div class="metric-tile">
-            <h4>250K+</h4>
-            <p>Fluency Hours Logged</p>
-        </div>
-    </div>
-
-    <section class="section-wrap">
-        <div class="center-header">
-            <h2>The Structural Modules</h2>
-            <p>A breakdown of our specialized engineering paths designed to transition children into natural, high-retention language processors.</p>
-        </div>
-
-        <div class="bento-grid">
-            <div class="bento-card">
-                <div class="img-frame">
-                    <img src="linguistic.jpg" alt="Linguistic Framework" onerror="this.style.display='none';">
+    <section class="approach-section">
+        <h2>Our Approach</h2>
+        <div class="title-divider"></div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="image-wrapper">
+                    <img src="linguistic.jpg" alt="Linguistic Immersion" onerror="this.style.display='none'; this.parentNode.innerText='Linguistic Image Here'">
                 </div>
                 <h3>Linguistic Immersion</h3>
-                <p class="summary">Bypassing legacy mechanics like memorization tables to run full conversational simulations directly inside natural social workflows.</p>
+                <p class="intro-text">Language is best learned when it is lived. Instead of rigid memorization and grammar drills, we focus on natural acquisition in a supportive, fully immersive environment.</p>
                 
-                <div class="expand-area" id="info1">
+                <div class="more-info" id="info1">
                     <ul>
-                        <li><strong>Fluid Context Matrix:</strong> Continuous native instruction sets mapped to developmental milestones.</li>
-                        <li><strong>Low-Friction Testing:</strong> Real-time accuracy metrics captured through games and organic play scenarios.</li>
+                        <li><strong>Interactive Learning:</strong> Building fluency through structured exploration, conversations, and group games.</li>
+                        <li><strong>Real-World Context:</strong> Integrating Mandarin into daily routines to make learning practical and engaging.</li>
+                        <li><strong>Confident Communication:</strong> Empowering children to speak, think, and express themselves naturally.</li>
                     </ul>
                 </div>
-                <button class="spec-toggle-btn" onclick="toggleModule('info1', this)">Expand Spec Matrix</button>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info1', this)">Learn More</button>
             </div>
 
-            <div class="bento-card">
-                <div class="img-frame">
-                    <img src="academic.jpg" alt="Academic Framework" onerror="this.style.display='none';">
+            <div class="card">
+                <div class="image-wrapper">
+                    <img src="academic.jpg" alt="Academic Support" onerror="this.style.display='none'; this.parentNode.innerText='Academic Image Here'">
                 </div>
                 <h3>Academic Support</h3>
-                <p class="summary">Stabilizing multi-track traditional school assignments while configuring optimized study habits inside managed work pods.</p>
+                <p class="intro-text">Balancing schoolwork and language learning can be challenging. We provide a dedicated, quiet environment where students can complete their homework with confidence.</p>
                 
-                <div class="expand-area" id="info2">
+                <div class="more-info" id="info2">
                     <ul>
-                        <li><strong>Expert Assistance:</strong> Professional subject mentors removing homework friction loops daily.</li>
-                        <li><strong>Self-Directed Paths:</strong> Fostering independent study habits that scale cleanly into later academic stages.</li>
+                        <li><strong>Expert Guidance:</strong> Targeted assistance from experienced educators to help students master core subjects.</li>
+                        <li><strong>Stress Reduction:</strong> Minimizes after-school stress for families by managing curriculum needs during program hours.</li>
+                        <li><strong>Lifelong Habits:</strong> Fosters independent study skills that set children up for long-term academic success.</li>
                     </ul>
                 </div>
-                <button class="spec-toggle-btn" onclick="toggleModule('info2', this)">Expand Spec Matrix</button>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info2', this)">Learn More</button>
             </div>
 
-            <div class="bento-card">
-                <div class="img-frame">
-                    <img src="cultural.jpg" alt="Cultural Framework" onerror="this.style.display='none';">
+            <div class="card">
+                <div class="image-wrapper">
+                    <img src="cultural.jpg" alt="Cultural Creative" onerror="this.style.display='none'; this.parentNode.innerText='Cultural Image Here'">
                 </div>
                 <h3>Cultural Creative</h3>
-                <p class="summary">Linking verbal speech directly to artistic history layers via physical calligraphy loops, traditional sound structures, and heritage art.</p>
+                <p class="intro-text">True fluency goes hand-in-hand with cultural understanding. We bring the vibrant traditions of the Chinese-speaking world to life by connecting language learning directly to creative expression.</p>
                 
-                <div class="expand-area" id="info3">
+                <div class="more-info" id="info3">
                     <ul>
-                        <li><strong>Heritage Studio Arrays:</strong> Hands-on interactions with ink, paper mediums, and historical string intervals.</li>
-                        <li><strong>Global Ecosystem:</strong> Milestone recognition tracking calendar seasons for global historical context.</li>
+                        <li><strong>Traditional Arts:</strong> Hands-on exploration of rich history and heritage through calligraphy and brush painting.</li>
+                        <li><strong>Immersive Expression:</strong> Engaging students through traditional music, storytelling, and interactive arts.</li>
+                        <li><strong>Seasonal Celebrations:</strong> Participating in cultural holiday traditions to foster a lifelong global perspective and deeper appreciation.</li>
                     </ul>
                 </div>
-                <button class="spec-toggle-btn" onclick="toggleModule('info3', this)">Expand Spec Matrix</button>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info3', this)">Learn More</button>
             </div>
         </div>
-    </section>
 
-    <section class="section-wrap">
-        <div class="center-header">
-            <h2>The Fluency Pipeline</h2>
-            <p>Our progressive timeline framework tracking long-term childhood development paths from initialization to legacy fluency.</p>
-        </div>
-
-        <div class="timeline-container">
-            <div class="timeline-step">
-                <h4>Phase 01 // Structural Initialization</h4>
-                <p>Acquiring auditory baselines, tonal calibration targets, and basic conversational patterns through low-stress interactive play matrix sets.</p>
-            </div>
-            <div class="timeline-step">
-                <h4>Phase 02 // Functional Integration</h4>
-                <p>Executing active compound sentences, basic script processing, and core curriculum study synchronization with minimal adult overhead.</p>
-            </div>
-            <div class="timeline-step">
-                <h4>Phase 03 // Deep Creative Command</h4>
-                <p>Configuring complete cultural context maps, high-level abstract logic execution, traditional medium brush manipulation, and independent tracking.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-wrap">
-        <div class="center-header">
-            <h2>Operational Matrix Mapping</h2>
-            <p>See how our structured immersion ecosystems outperform legacy after-school daycare frameworks across key development categories.</p>
-        </div>
-
-        <table class="matrix-table">
-            <thead>
-                <tr>
-                    <th>Capability Field</th>
-                    <th>Unity Platform Standard</th>
-                    <th>Legacy Care Centers</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Language Vectoring</td>
-                    <td style="color: var(--mint-signal);">Fully Immersive Systemic (Mandarin Only)</td>
-                    <td>Passive English Baselines</td>
-                </tr>
-                <tr>
-                    <td>Academic Management</td>
-                    <td style="color: var(--mint-signal);">Certified Educator Tracking Pods</td>
-                    <td>Unsupervised Free-Study Blocks</td>
-                </tr>
-                <tr>
-                    <td>Historical Art Access</td>
-                    <td style="color: var(--mint-signal);">Studio Calligraphy & Tonal Acoustics</td>
-                    <td>Standard Digital Displays / Video Loops</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section class="section-wrap">
-        <div class="center-header">
-            <h2>System FAQ</h2>
-            <p>Answers to configuration questions regarding entry windows, skill requirements, and curriculum parameters.</p>
-        </div>
-
-        <div class="faq-box">
-            <div class="faq-item">
-                <button class="faq-trigger" onclick="toggleFaq(this)">
-                    <span>Does my child require prior baseline language skills?</span>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2"/></svg>
-                </button>
-                <div class="faq-content">
-                    No. Our onboarding systems are configured to split students into their correct processing lanes based on baseline entry scans, catering equally to beginners and native speakers.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-trigger" onclick="toggleFaq(this)">
-                    <span>How does homework support coordinate with local schools?</span>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2"/></svg>
-                </button>
-                <div class="faq-content">
-                    Our educational staff cross-references regional school criteria parameters daily, providing precision guidance blocks to complete assignments cleanly before check-out cycles.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-trigger" onclick="toggleFaq(this)">
-                    <span>What are the instructor safety and check-off profiles?</span>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2"/></svg>
-                </button>
-                <div class="faq-content">
-                    All instructors carry verified early childhood academic degrees and go through mandatory security background clearings and native speech audits.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-wrap">
-        <div class="cta-banner">
-            <h2>Initialize Secure Placement</h2>
-            <p>Secure a seat in our high-density learning groups. Spaces are strictly controlled to protect our instructor-to-student configuration limits.</p>
-            <a href="#" class="btn btn-primary">Submit Application Pipeline</a>
+        <div class="commitment-ribbon">
+            Our Commitment to Your Child's Success
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="logo-container">
-                    <div class="logo-symbol">同</div>
-                    <span class="logo-text">Unity Center</span>
-                </div>
-                <p>Architecting high-retention cultural communication systems for next-generation global thinkers.</p>
-            </div>
-            <div class="footer-col">
-                <h5>Programs</h5>
-                <ul>
-                    <li><a href="#">Linguistic Paths</a></li>
-                    <li><a href="#">Academic Matrix</a></li>
-                    <li><a href="#">Heritage Studio</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Infrastructure</h5>
-                <ul>
-                    <li><a href="#">Security Profiles</a></li>
-                    <li><a href="#">Faculty Credentials</a></li>
-                    <li><a href="#">Location Topology</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Enterprise</h5>
-                <ul>
-                    <li><a href="#">Privacy Engine</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Support Terminal</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>&copy; 2026 Unity Mandarin Center. All operations active.</div>
-            <div>Deployment System v4.1.0</div>
-        </div>
+        <p>&copy; 2026 Unity Mandarin Center. All rights reserved.</p>
     </footer>
 
     <script>
-        function toggleModule(infoId, button) {
-            var panel = document.getElementById(infoId);
-            if (panel.style.display === "none" || panel.style.display === "") {
-                panel.style.display = "block";
-                button.textContent = "Collapse Spec Matrix";
+        function toggleHomeCard(infoId, button) {
+            var infoPanel = document.getElementById(infoId);
+            if (infoPanel.style.display === "none" || infoPanel.style.display === "") {
+                infoPanel.style.display = "block";
+                button.textContent = "Close Details";
             } else {
-                panel.style.display = "none";
-                button.textContent = "Expand Spec Matrix";
-            }
-        }
-
-        function toggleFaq(btn) {
-            var content = btn.nextElementSibling;
-            var arrow = btn.querySelector('svg');
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                arrow.style.transform = "rotate(0deg)";
-            } else {
-                content.style.display = "block";
-                arrow.style.transform = "rotate(180deg)";
+                infoPanel.style.display = "none";
+                button.textContent = "Learn More";
             }
         }
     </script>
