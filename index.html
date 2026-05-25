@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unity Mandarin Center</title>
     <style>
-        /* --- BRAND DESIGN SYSTEM --- */
+        /* --- HIGH-TECH DESIGN SYSTEM --- */
         :root {
-            --brand-orange: #FF5722;     /* The bold orange from your logo */
-            --mint-bg: #C1F2D1;         /* Rich, vibrant mint backdrop canvas */
-            --text-dark: #122C1E;        /* Deep organic forest tone for maximum contrast readability */
-            --white: #FFFFFF;
+            --brand-orange: #FF5722;
+            --brand-orange-glow: rgba(255, 87, 34, 0.25);
+            --mint-bg: #E3FBEA;          /* Crisp, bright tech-mint canvas */
+            --mint-accent: #A6EBC5;      /* Tech neon-mint highlights */
+            --text-main: #0B1E14;        /* Deep cyberpunk obsidian */
+            --glass-card: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(166, 235, 197, 0.4);
         }
 
         * {
@@ -21,8 +24,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: var(--text-dark);
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
             background-color: var(--mint-bg);
             min-height: 100vh;
             display: flex;
@@ -31,41 +34,39 @@
             position: relative;
         }
 
-        /* --- THEMATIC OVERLAPPING GRAPHICS --- */
-        /* Giant background decorative elements imitating the tropical leaves/silk frame logic natively */
-        body::before {
-            content: '同心';
+        /* --- TECH GRADIENT BACKDROP SHAPES --- */
+        .tech-bg-glow {
             position: absolute;
-            top: 15%;
-            left: -5%;
-            font-size: 18vw;
-            font-family: "Georgia", serif;
-            font-weight: 900;
-            color: rgba(18, 44, 30, 0.04);
-            pointer-events: none;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 87, 34, 0.15) 0%, rgba(255,255,255,0) 70%);
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1;
-            letter-spacing: -10px;
+            pointer-events: none;
         }
 
-        body::after {
-            content: '中文';
+        .tech-grid-overlay {
             position: absolute;
-            bottom: 10%;
-            right: -5%;
-            font-size: 18vw;
-            font-family: "Georgia", serif;
-            font-weight: 900;
-            color: rgba(18, 44, 30, 0.04);
+            inset: 0;
+            background-image: linear-gradient(rgba(11, 30, 20, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(11, 30, 20, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 2;
             pointer-events: none;
-            z-index: 1;
-            letter-spacing: -10px;
         }
 
-        /* --- MINIMALIST FLOATING NAVIGATION --- */
+        /* --- GLASSMORPHIC NAV BAR --- */
         header {
-            position: relative;
-            z-index: 10;
-            padding: 30px 60px;
+            position: sticky;
+            top: 0;
+            background: rgba(227, 251, 234, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(166, 235, 197, 0.3);
+            z-index: 100;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -78,366 +79,425 @@
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--brand-orange);
-            box-shadow: 0 4px 10px rgba(18, 44, 30, 0.08);
+        .logo-badge {
+            background: linear-gradient(135deg, var(--brand-orange), #FF8A65);
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--brand-orange-glow);
+            letter-spacing: 0.5px;
         }
 
         .logo-text {
-            font-family: "Georgia", serif;
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--text-dark);
             letter-spacing: -0.5px;
+            color: var(--text-main);
         }
 
         nav {
             display: flex;
-            gap: 35px;
+            gap: 8px;
+            background: rgba(11, 30, 20, 0.04);
+            padding: 4px;
+            border-radius: 20px;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-main);
             font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            opacity: 0.8;
-            transition: all 0.3s ease;
+            font-size: 0.82rem;
+            padding: 8px 16px;
+            border-radius: 16px;
+            transition: all 0.25s ease;
         }
 
-        nav a:hover {
-            opacity: 1;
+        nav a:hover, nav a.active {
+            background: white;
             color: var(--brand-orange);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
         }
 
-        /* --- HERO BREAKTHROUGH SECTION --- */
+        /* --- ULTRA-MODERN HERO SECTION --- */
         .hero {
             position: relative;
-            z-index: 5;
+            z-index: 10;
             text-align: center;
-            padding: 40px 20px 100px 20px;
-            max-width: 1100px;
+            padding: 100px 24px 80px 24px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: clamp(3.5rem, 7vw, 6.5rem);
-            font-family: "Georgia", serif;
-            font-weight: 900;
-            line-height: 1.05;
-            color: var(--white);
-            letter-spacing: -2px;
-            margin-bottom: 30px;
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid var(--mint-accent);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--brand-orange);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 10px rgba(166, 235, 197, 0.2);
         }
 
-        /* Large circular dynamic dome background mimicking the bold lower graphic layout */
-        .interactive-dome {
+        .hero-pill .dot {
+            width: 6px;
+            height: 6px;
             background-color: var(--brand-orange);
-            border-radius: 50% 50% 0 0;
-            padding: 90px 40px 100px 40px;
-            margin-top: -20px;
-            box-shadow: 0 20px 50px rgba(255, 87, 34, 0.3);
-            position: relative;
-            z-index: 6;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 87, 34, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--brand-orange), #FF7043);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.95);
-            max-width: 750px;
-            margin: 0 auto 40px auto;
-            line-height: 1.5;
-            font-family: "Georgia", serif;
-            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: #4A5E53;
+            max-width: 600px;
+            margin: 0 auto 35px auto;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         .cta-button {
-            background-color: var(--white);
-            color: var(--brand-orange);
-            padding: 16px 45px;
-            border-radius: 50px;
+            background: var(--text-main);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 12px;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: inline-block;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 25px rgba(11, 30, 20, 0.15);
         }
 
         .cta-button:hover {
-            transform: scale(1.06) translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            background: var(--brand-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px var(--brand-orange-glow);
         }
 
-        /* --- THE APPROACH: GRID LOGIC SECTION --- */
+        /* --- TECH BENTO GRID ARCHITECTURE --- */
         .approach-section {
-            background-color: var(--white);
-            padding: 100px 60px;
             position: relative;
-            z-index: 7;
-            border-radius: 40px 40px 0 0;
-            margin-top: -60px;
-            box-shadow: 0 -20px 40px rgba(18, 44, 30, 0.05);
-        }
-
-        .approach-section h2 {
-            text-align: center;
-            font-family: "Georgia", serif;
-            font-size: clamp(2.2rem, 4vw, 3.5rem);
-            color: var(--text-dark);
-            margin-bottom: 60px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            z-index: 10;
+            padding: 60px 40px 100px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Clean Modern Card Containers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Futuristic Glass Cards */
         .card {
-            background-color: #F7FAF8;
-            border-radius: 24px;
-            padding: 30px;
+            background: var(--glass-card);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(18, 44, 30, 0.06);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--brand-orange);
+            box-shadow: 0 20px 40px rgba(11, 30, 20, 0.05);
         }
 
-        .image-wrapper {
+        .image-container {
             width: 100%;
-            height: 250px;
-            border-radius: 16px;
+            height: 180px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 25px;
-            background-color: #E2ECE6;
+            background-color: rgba(166, 235, 197, 0.2);
+            margin-bottom: 20px;
+            position: relative;
         }
 
         .card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
 
-        .card:hover .image-wrapper img {
-            transform: scale(1.04);
+        /* Simulated tech UI code overlay line on top of image frame */
+        .image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brand-orange), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .image-container::after {
+            opacity: 1;
         }
 
         .card h3 {
-            font-family: "Georgia", serif;
-            font-size: 1.6rem;
-            color: var(--text-dark);
-            margin-bottom: 12px;
+            font-size: 1.3rem;
             font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
         }
 
         .card p.intro-text {
-            font-size: 0.98rem;
-            line-height: 1.6;
-            color: #4A5D52;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #4A5E53;
+            margin-bottom: 24px;
         }
 
-        /* Interactive Expandable Panels */
+        /* Expandable technical details modules */
         .more-info {
             display: none;
-            border-top: 1px dashed rgba(18, 44, 30, 0.15);
-            padding-top: 20px;
+            border-top: 1px solid rgba(166, 235, 197, 0.4);
+            padding-top: 16px;
             margin-bottom: 20px;
         }
 
         .card ul {
-            padding-left: 20px;
-            list-style-type: square;
+            list-style: none;
         }
 
         .card li {
-            font-size: 0.92rem;
+            font-size: 0.85rem;
             line-height: 1.5;
-            color: #33443A;
-            margin-bottom: 10px;
+            color: #2D3E35;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        /* High-tech arrow terminal indicator lists */
+        .card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--brand-orange);
+            font-weight: bold;
         }
 
         .learn-more-btn {
-            background: none;
-            border: 2px solid var(--text-dark);
-            color: var(--text-dark);
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-size: 0.85rem;
+            background: white;
+            border: 1px solid rgba(11, 30, 20, 0.1);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.8rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             cursor: pointer;
             align-self: flex-start;
             margin-top: auto;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .learn-more-btn:hover {
-            background-color: var(--text-dark);
-            color: var(--white);
+            border-color: var(--text-main);
+            background: var(--text-main);
+            color: white;
         }
 
-        /* --- FOOTER REGIONS --- */
+        /* --- THE SUB-FOOTER STRIP --- */
         .commitment-banner {
-            background-color: var(--text-dark);
-            color: var(--mint-bg);
-            padding: 40px 20px;
+            background: var(--text-main);
+            color: white;
+            padding: 30px;
             text-align: center;
-            font-family: "Georgia", serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            letter-spacing: 1px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.2px;
+            position: relative;
+            z-index: 10;
         }
 
+        /* --- MODERN MINIMALIST FOOTER --- */
         footer {
-            background-color: #0B1B12;
-            color: rgba(255, 255, 255, 0.4);
-            padding: 40px 60px;
+            background: #06120C;
+            color: rgba(255, 255, 255, 0.35);
+            padding: 30px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 10;
         }
 
         footer a {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
             margin-left: 20px;
         }
 
         footer a:hover {
-            color: var(--white);
+            color: white;
         }
 
-        /* --- STUNNING MOBILE RESPONSIVENESS --- */
-        @media (max-width: 800px) {
-            header {
-                padding: 20px;
-                flex-direction: column;
+        /* --- RESPONSIVE ADAPTATIONS --- */
+        @media (max-width: 960px) {
+            .grid {
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .approach-section {
-                padding: 60px 20px;
+            header {
+                padding: 16px 24px;
             }
-            footer {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-                padding: 30px 20px;
+            .approach-section {
+                padding: 40px 24px;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="tech-bg-glow"></div>
+    <div class="tech-grid-overlay"></div>
+
     <header>
         <a href="#" class="logo-container">
-            <div class="logo-icon">同</div>
+            <div class="logo-badge">同心</div>
             <span class="logo-text">Unity Mandarin Center</span>
         </a>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Our Programs</a>
+            <a href="#" class="active">Home</a>
+            <a href="#">About</a>
+            <a href="#">Programs</a>
             <a href="#">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Where Language Meets Culture</h1>
-        
-        <div class="interactive-dome">
-            <p>Empowering children through interactive immersion, comprehensive academic support, and vibrant cultural exploration frameworks.</p>
-            <a href="#" class="cta-button">Enroll Today</a>
+        <div class="hero-pill">
+            <span class="dot"></span> Next-Gen Immersion Architecture
         </div>
+        <h1>Empowering Growth Through <span>Language Coding</span></h1>
+        <p>A precision language acquisition workspace bringing dynamic immersion frameworks, core curriculum syncing, and rich heritage exploration blueprints together into high-performance pathways.</p>
+        <a href="#" class="cta-button">
+            Enroll Now 
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
     </section>
 
     <section class="approach-section">
-        <h2>What Makes Us Stand Out?</h2>
+        <div class="section-header">
+            <h2>The Structural Modules</h2>
+        </div>
         
         <div class="grid">
             <div class="card">
-                <div class="image-wrapper">
-                    <img src="linguistic.jpg" alt="Linguistic Immersion" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#E2ECE6';">
+                <div class="image-container">
+                    <img src="linguistic.jpg" alt="Linguistic Immersion" onerror="this.style.display='none';">
                 </div>
                 <h3>Linguistic Immersion</h3>
-                <p class="intro-text">Language is best learned when it is lived. Instead of rigid memorization, we focus on natural fluency acquisition workflows inside an engaging space.</p>
+                <p class="intro-text">Moving past rigid legacy memorization matrices into native conversational fluency deployment environments built for organic development.</p>
                 
                 <div class="more-info" id="info1">
                     <ul>
-                        <li><strong>Interactive Learning:</strong> Dynamic structures based on realistic conversation matrices.</li>
-                        <li><strong>Real-World Context:</strong> Native implementation paths matching standard childhood growth milestones.</li>
+                        <li><strong>Dynamic Scaffolding:</strong> Fluid conversation simulations designed around interactive logic targets.</li>
+                        <li><strong>Contextual Engineering:</strong> Deep integration rules mapping language keys cleanly into natural routine timelines.</li>
                     </ul>
                 </div>
-                <button class="learn-more-btn" onclick="toggleCard('info1', this)">Learn More</button>
+                <button class="learn-more-btn" onclick="toggleCard('info1', this)">Expand Spec</button>
             </div>
 
             <div class="card">
-                <div class="image-wrapper">
-                    <img src="academic.jpg" alt="Academic Support" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#E2ECE6';">
+                <div class="image-container">
+                    <img src="academic.jpg" alt="Academic Support" onerror="this.style.display='none';">
                 </div>
                 <h3>Academic Support</h3>
-                <p class="intro-text">Balancing custom language targets and standard curriculums cleanly. We protect independent study spaces under expert guidance.</p>
+                <p class="intro-text">Syncing multi-track school loads and target study lanes cleanly within quiet, highly optimized diagnostic processing spaces.</p>
                 
                 <div class="more-info" id="info2">
                     <ul>
-                        <li><strong>Targeted Support:</strong> Seasoned subject educators setting students up for scalable tracking successes.</li>
-                        <li><strong>Stress Reduction:</strong> Reducing downstream loads natively during framework operational hours.</li>
+                        <li><strong>Targeted Guidance:</strong> Expert educator oversight configuring core subjects for fast structural success paths.</li>
+                        <li><strong>Load Management:</strong> Drastically reducing downstream family friction during project operations.</li>
                     </ul>
                 </div>
-                <button class="learn-more-btn" onclick="toggleCard('info2', this)">Learn More</button>
+                <button class="learn-more-btn" onclick="toggleCard('info2', this)">Expand Spec</button>
             </div>
 
             <div class="card">
-                <div class="image-wrapper">
-                    <img src="cultural.jpg" alt="Cultural Creative" onerror="this.style.display='none'; this.parentNode.style.backgroundColor='#E2ECE6';">
+                <div class="image-container">
+                    <img src="cultural.jpg" alt="Cultural Creative" onerror="this.style.display='none';">
                 </div>
                 <h3>Cultural Creative</h3>
-                <p class="intro-text">True fluid speaking pairs accurately with historical perspective. We directly tie artistic heritage pathways into contemporary expression windows.</p>
+                <p class="intro-text">Mapping historical perspective layers onto active vocal skills. We route heritage workflows directly through custom creative synthesis modules.</p>
                 
                 <div class="more-info" id="info3">
                     <ul>
-                        <li><strong>Traditional Arts:</strong> Calligraphy, historic medium brush painting, and acoustic arts.</li>
-                        <li><strong>Seasonal Celebrations:</strong> Global outlook milestones providing wide baseline perspectives.</li>
+                        <li><strong>Traditional Systems:</strong> Physical medium integration loops tracking calligraphy and historical painting arrays.</li>
+                        <li><strong>Global Horizons:</strong> High-level season milestone tracking providing scalable systemic analytical insight roots.</li>
                     </ul>
                 </div>
-                <button class="learn-more-btn" onclick="toggleCard('info3', this)">Learn More</button>
+                <button class="learn-more-btn" onclick="toggleCard('info3', this)">Expand Spec</button>
             </div>
         </div>
     </section>
 
     <div class="commitment-banner">
-        Our Commitment to Your Child's Success
+        // COMMITMENT TO YOUR CHILD'S SCALE SUCCESS METRICS
     </div>
 
     <footer>
-        <div>&copy; 2026 Unity Mandarin Center. All rights reserved.</div>
+        <div>&copy; 2026 Unity Mandarin Center. Engine Version 3.4.0</div>
         <div>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Framework</a>
+            <a href="#">Terms of Architecture</a>
         </div>
     </footer>
 
@@ -446,10 +506,10 @@
             var infoPanel = document.getElementById(infoId);
             if (infoPanel.style.display === "none" || infoPanel.style.display === "") {
                 infoPanel.style.display = "block";
-                button.textContent = "Close Details";
+                button.textContent = "Collapse Spec";
             } else {
                 infoPanel.style.display = "none";
-                button.textContent = "Learn More";
+                button.textContent = "Expand Spec";
             }
         }
     </script>
