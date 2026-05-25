@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Mandarin Center</title>
+    <style>
+        /* --- GLOBAL STYLES --- */
+        :root {
+            --brand-orange: #FF5722; /* Matches your beautiful new orange logo text */
+            --mint-green: #D1F7DB; /* Matches your smooth mint green background banner */
+            --text-dark: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            
+            /* BASE BG COLOR: Plain, clean, premium ivory canvas in the middle */
+            background-color: #fdfbf7; 
+            
+            /* EXPANDED SYSTEM: Multi-Layered Side Silk & Studio Light System */
+            background-image: 
+                /* LAYER 1: Soft center studio lighting spotlight glow (makes content pop) */
+                radial-gradient(
+                    circle at 50% 35%, 
+                    #ffffff 0%, 
+                    rgba(253, 251, 247, 0.5) 40%, 
+                    rgba(253, 251, 247, 0) 70%
+                ),
+                /* LAYER 2: Left-Side Silk Ribbon Curtain & Shadow Creases */
+                linear-gradient(
+                    to right, 
+                    #cca766 0%,    /* Deep golden edge boundary */
+                    #dcc08a 2%,    /* High-contrast fabric highlight */
+                    #cca766 3.5%,  /* First drape shadow dip */
+                    #ebd9b4 6%,    /* Soft reflection ridge */
+                    #f5ebd4 10%,   /* Transition smoothing slope */
+                    rgba(253, 251, 247, 0) 15% /* Crisp fade out into the plain center */
+                ),
+                /* LAYER 3: Right-Side Silk Ribbon Curtain & Shadow Creases */
+                linear-gradient(
+                    to left, 
+                    #cca766 0%,    /* Deep golden edge boundary */
+                    #dcc08a 2%,    /* High-contrast fabric highlight */
+                    #cca766 3.5%,  /* First drape shadow dip */
+                    #ebd9b4 6%,    /* Soft reflection ridge */
+                    #f5ebd4 10%,   /* Transition smoothing slope */
+                    rgba(253, 251, 247, 0) 15% /* Crisp fade out into the plain center */
+                );
+
+            /* PERFORMANCE VALUES: Locks graphics beautifully in place during scroll */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+
+        /* --- MINT GREEN NAVIGATION BAR --- */
+        header {
+            background-color: var(--mint-green); /* Changed to your mint green banner background */
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--brand-orange);
+            text-decoration: none;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--brand-orange);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: transparent; /* Transparent to preserve the studio backdrop */
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: var(--brand-orange); /* Big text changed to brand orange */
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #555;
+        }
+
+        .cta-button {
+            background-color: var(--brand-orange); /* Button changed to brand orange */
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19; /* Darker orange hover state */
+        }
+
+        /* --- OUR APPROACH SECTION --- */
+        .approach-section {
+            padding: 40px 40px 60px 40px;
+            max-width: 1260px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .approach-section > h2 {
+            text-align: center;
+            font-size: 36px;
+            color: var(--brand-orange); /* Section title updated to orange */
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .title-divider {
+            width: 180px;
+            height: 2px;
+            background-color: #cbb27a;
+            margin: 0 auto 45px auto;
+        }
+
+        /* Three-Column Responsive Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        /* Traditional Scroll Framing Design with Premium Shadows */
+        .card {
+            background-color: #fdfaf2;
+            border-left: 1px solid #dcc697;
+            border-right: 1px solid #dcc697;
+            padding: 24px 20px 22px 20px;
+            position: relative;
+            box-shadow: 0 12px 28px rgba(255, 87, 34, 0.08), 0 3px 8px rgba(0,0,0,0.04);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 45px rgba(255, 87, 34, 0.15);
+        }
+
+        /* Scroll Top Endbar Bracket */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -4px;
+            right: -4px;
+            height: 6px;
+            background: linear-gradient(to right, #bfa15f 0%, #1c2a38 3%, #1c2a38 97%, #bfa15f 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Scroll Bottom Endbar Bracket */
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -4px;
+            right: -4px;
+            height: 6px;
+            background: linear-gradient(to right, #bfa15f 0%, #1c2a38 3%, #1c2a38 97%, #bfa15f 100%);
+            border-radius: 2px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Scroll Corner Framing Loops */
+        .corner-frame {
+            position: absolute;
+            top: 12px;
+            bottom: 12px;
+            left: 8px;
+            right: 8px;
+            border: 1px solid rgba(191, 161, 95, 0.35);
+            pointer-events: none;
+        }
+        .corner-frame::before, .corner-frame::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1.5px solid #bfa15f;
+        }
+        .corner-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .corner-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+        /* Crisp Boxed Images */
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border: 1px solid #1c2a38;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+
+        /* Card Content Headings */
+        .card h3 {
+            color: var(--brand-orange); /* Set card heading text to orange */
+            font-size: 1.35rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .card p.intro-text {
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: #2b2b2b;
+            margin-bottom: 14px;
+            padding: 0 4px;
+        }
+
+        /* Hidden Inner Panel Logic */
+        .more-info {
+            display: none;
+            text-align: left;
+            border-top: 1px dashed rgba(191, 161, 95, 0.4);
+            padding-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card ul {
+            text-align: left;
+            padding-left: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+            color: #444444;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            line-height: 1.45;
+        }
+
+        /* Interactive Expansion Buttons */
+        .learn-more-btn {
+            background-color: transparent;
+            border: 1px solid #bfa15f;
+            color: var(--brand-orange); /* Text labeled in orange */
+            padding: 7px 20px;
+            font-family: 'Times New Roman', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: auto;
+            align-self: center;
+            z-index: 5;
+            transition: all 0.2s ease;
+        }
+
+        .learn-more-btn:hover {
+            background-color: var(--brand-orange);
+            border-color: var(--brand-orange);
+            color: #fdfaf2;
+        }
+
+        /* Footer Accent Ribbon */
+        .commitment-ribbon {
+            background: linear-gradient(to right, #1a2e40, #11202e);
+            color: #dcc697;
+            padding: 18px;
+            font-size: 1.25rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.18);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto;
+            z-index: 10;
+        }
+
+        /* --- RESPONSIVE MOBILE ADJUSTMENTS --- */
+        @media (max-width: 800px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            body {
+                background-image: none; /* Fallback flat viewport pattern for small devices */
+                background-color: #fdfbf7;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+            <img src="logo.png" alt="Unity Mandarin Center Logo" style="height: 50px; width: auto; border-radius: 50%;">
+            <span class="logo-text" style="font-family: 'Georgia', serif; font-size: 24px; font-weight: bold; color: var(--brand-orange);">Unity Mandarin Center</span>
+        </a>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Our Programs</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to Unity Mandarin Center</h1>
+        <p>Empowering children through language, academic support, and vibrant cultural exploration.</p>
+        <a href="#" class="cta-button">Enroll Today</a>
+    </section>
+
+    <section class="approach-section">
+        <h2>Our Approach</h2>
+        <div class="title-divider"></div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="corner-frame"></div>
+                <img src="linguistic.jpg" alt="Linguistic Immersion">
+                <h3>Linguistic Immersion</h3>
+                <p class="intro-text">Language is best learned when it is lived. Instead of rigid memorization and grammar drills, we focus on natural acquisition in a supportive, fully immersive environment.</p>
+                
+                <div class="more-info" id="info1">
+                    <ul>
+                        <li><strong>Interactive Learning:</strong> Building fluency through structured exploration, conversations, and group games.</li>
+                        <li><strong>Real-World Context:</strong> Integrating Mandarin into daily routines to make learning practical and engaging.</li>
+                        <li><strong>Confident Communication:</strong> Empowering children to speak, think, and express themselves naturally.</li>
+                    </ul>
+                </div>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info1', this)">Learn More</button>
+            </div>
+
+            <div class="card">
+                <div class="corner-frame"></div>
+                <img src="academic.jpg" alt="Academic Support">
+                <h3>Academic Support</h3>
+                <p class="intro-text">Balancing schoolwork and language learning can be challenging. We provide a dedicated, quiet environment where students can complete their homework with confidence.</p>
+                
+                <div class="more-info" id="info2">
+                    <ul>
+                        <li><strong>Expert Guidance:</strong> Targeted assistance from experienced educators to help students master core subjects.</li>
+                        <li><strong>Stress Reduction:</strong> Minimizes after-school stress for families by managing curriculum needs during program hours.</li>
+                        <li><strong>Lifelong Habits:</strong> Fosters independent study skills that set children up for long-term academic success.</li>
+                    </ul>
+                </div>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info2', this)">Learn More</button>
+            </div>
+
+            <div class="card">
+                <div class="corner-frame"></div>
+                <img src="cultural.jpg" alt="Cultural Creative">
+                <h3>Cultural Creative</h3>
+                <p class="intro-text">True fluency goes hand-in-hand with cultural understanding. We bring the vibrant traditions of the Chinese-speaking world to life by connecting language learning directly to creative expression.</p>
+                
+                <div class="more-info" id="info3">
+                    <ul>
+                        <li><strong>Traditional Arts:</strong> Hands-on exploration of rich history and heritage through calligraphy and brush painting.</li>
+                        <li><strong>Immersive Expression:</strong> Engaging students through traditional music, storytelling, and interactive arts.</li>
+                        <li><strong>Seasonal Celebrations:</strong> Participating in cultural holiday traditions to foster a lifelong global perspective and deeper appreciation.</li>
+                    </ul>
+                </div>
+                <button class="learn-more-btn" onclick="toggleHomeCard('info3', this)">Learn More</button>
+            </div>
+        </div>
+
+        <div class="commitment-ribbon">
+            Our Commitment to Your Child's Success
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Unity Mandarin Center. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleHomeCard(infoId, button) {
+            var infoPanel = document.getElementById(infoId);
+            if (infoPanel.style.display === "none" || infoPanel.style.display === "") {
+                infoPanel.style.display = "block";
+                button.textContent = "Close Details";
+            } else {
+                infoPanel.style.display = "none";
+                button.textContent = "Learn More";
+            }
+        }
+    </script>
+
+</body>
+</html>
