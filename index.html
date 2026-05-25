@@ -8,7 +8,7 @@
     <style>
         /* --- GLOBAL STYLES --- */
         :root {
-            --brand-orange: #FF5722; /* Matches your beautiful new orange logo text */
+            --brand-orange: #FF5722; /* Matches your brand orange logo text */
             --mint-green: #D1F7DB; /* Matches your smooth mint green background banner */
             --text-dark: #333333;
         }
@@ -28,40 +28,40 @@
             position: relative;
             overflow-x: hidden;
             
-            /* BASE BG COLOR: Plain, clean, premium ivory canvas in the middle */
-            background-color: #fdfbf7; 
+            /* BASE BG COLOR: Light, pristine mint-tinted cream ivory canvas */
+            background-color: #f5faf6; 
             
-            /* EXPANDED SYSTEM: Multi-Layered Side Silk & Studio Light System */
+            /* RE-CALIBRATED BACKDROP STYLING SYSTEM */
             background-image: 
-                /* LAYER 1: Soft center studio lighting spotlight glow (makes content pop) */
+                /* LAYER 1: Soft center lighting spotlight glow */
                 radial-gradient(
                     circle at 50% 35%, 
                     #ffffff 0%, 
-                    rgba(253, 251, 247, 0.5) 40%, 
-                    rgba(253, 251, 247, 0) 70%
+                    rgba(245, 250, 246, 0.6) 40%, 
+                    rgba(245, 250, 246, 0) 70%
                 ),
-                /* LAYER 2: Left-Side Silk Ribbon Curtain & Shadow Creases */
+                /* LAYER 2: Left-Side Elegant Mint Silk Ribbon Curtain with Soft Warm Shadows */
                 linear-gradient(
                     to right, 
-                    #cca766 0%,    /* Deep golden edge boundary */
-                    #dcc08a 2%,    /* High-contrast fabric highlight */
-                    #cca766 3.5%,  /* First drape shadow dip */
-                    #ebd9b4 6%,    /* Soft reflection ridge */
-                    #f5ebd4 10%,   /* Transition smoothing slope */
-                    rgba(253, 251, 247, 0) 15% /* Crisp fade out into the plain center */
+                    #a8dfb5 0%,    /* Rich mint base boundary edge */
+                    #c4ebd0 2%,    /* High-contrast fabric highlight ridge */
+                    #b5e5c1 3.5%,  /* Soft drape crease shadow depth */
+                    var(--mint-green) 6%, /* Smooth transition curve */
+                    #eaf7ed 11%,   /* Blending boundary zone */
+                    rgba(245, 250, 246, 0) 16% /* Clean fade out into the plain text canvas */
                 ),
-                /* LAYER 3: Right-Side Silk Ribbon Curtain & Shadow Creases */
+                /* LAYER 3: Right-Side Elegant Mint Silk Ribbon Curtain with Soft Warm Shadows */
                 linear-gradient(
                     to left, 
-                    #cca766 0%,    /* Deep golden edge boundary */
-                    #dcc08a 2%,    /* High-contrast fabric highlight */
-                    #cca766 3.5%,  /* First drape shadow dip */
-                    #ebd9b4 6%,    /* Soft reflection ridge */
-                    #f5ebd4 10%,   /* Transition smoothing slope */
-                    rgba(253, 251, 247, 0) 15% /* Crisp fade out into the plain center */
+                    #a8dfb5 0%,    /* Rich mint base boundary edge */
+                    #c4ebd0 2%,    /* High-contrast fabric highlight ridge */
+                    #b5e5c1 3.5%,  /* Soft drape crease shadow depth */
+                    var(--mint-green) 6%, /* Smooth transition curve */
+                    #eaf7ed 11%,   /* Blending boundary zone */
+                    rgba(245, 250, 246, 0) 16% /* Clean fade out into the plain text canvas */
                 );
 
-            /* PERFORMANCE VALUES: Locks graphics beautifully in place during scroll */
+            /* PERFORMANCE CONTROLS */
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;
@@ -69,12 +69,12 @@
 
         /* --- MINT GREEN NAVIGATION BAR --- */
         header {
-            background-color: var(--mint-green); /* Changed to your mint green banner background */
+            background-color: var(--mint-green); 
             padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(168, 223, 181, 0.3);
             z-index: 10;
         }
 
@@ -90,6 +90,7 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
@@ -100,36 +101,39 @@
         .hero {
             text-align: center;
             padding: 80px 20px;
-            background-color: transparent; /* Transparent to preserve the studio backdrop */
+            background-color: transparent; 
         }
 
         .hero h1 {
             font-size: 48px;
             margin-bottom: 10px;
-            color: var(--brand-orange); /* Big text changed to brand orange */
+            color: var(--brand-orange); 
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
         }
 
         .hero p {
             font-size: 20px;
             max-width: 600px;
             margin: 0 auto 30px auto;
-            color: #555;
+            color: #444;
         }
 
         .cta-button {
-            background-color: var(--brand-orange); /* Button changed to brand orange */
+            background-color: var(--brand-orange); 
             color: white;
             padding: 12px 30px;
             border-radius: 25px;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: transform 0.2s, background-color 0.3s;
             display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
         }
 
         .cta-button:hover {
-            background-color: #e64a19; /* Darker orange hover state */
+            background-color: #e64a19; 
+            transform: translateY(-2px);
         }
 
         /* --- OUR APPROACH SECTION --- */
@@ -143,7 +147,7 @@
         .approach-section > h2 {
             text-align: center;
             font-size: 36px;
-            color: var(--brand-orange); /* Section title updated to orange */
+            color: var(--brand-orange); 
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -153,7 +157,7 @@
         .title-divider {
             width: 180px;
             height: 2px;
-            background-color: #cbb27a;
+            background-color: #a8dfb5; /* Updated divider to coordinate with mint theme */
             margin: 0 auto 45px auto;
         }
 
@@ -165,14 +169,14 @@
             margin-bottom: 50px;
         }
 
-        /* Traditional Scroll Framing Design with Premium Shadows */
+        /* Updated Traditional Scroll Framing with Mint accents and Orange Warm Glows */
         .card {
-            background-color: #fdfaf2;
-            border-left: 1px solid #dcc697;
-            border-right: 1px solid #dcc697;
+            background-color: #ffffff;
+            border-left: 1px solid #c4ebd0;
+            border-right: 1px solid #c4ebd0;
             padding: 24px 20px 22px 20px;
             position: relative;
-            box-shadow: 0 12px 28px rgba(255, 87, 34, 0.08), 0 3px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 12px 28px rgba(168, 223, 181, 0.15), 0 3px 8px rgba(0,0,0,0.02);
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -181,7 +185,7 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 22px 45px rgba(255, 87, 34, 0.15);
+            box-shadow: 0 22px 45px rgba(255, 87, 34, 0.12);
         }
 
         /* Scroll Top Endbar Bracket */
@@ -192,9 +196,9 @@
             left: -4px;
             right: -4px;
             height: 6px;
-            background: linear-gradient(to right, #bfa15f 0%, #1c2a38 3%, #1c2a38 97%, #bfa15f 100%);
+            background: linear-gradient(to right, #a8dfb5 0%, var(--brand-orange) 3%, var(--brand-orange) 97%, #a8dfb5 100%);
             border-radius: 2px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         /* Scroll Bottom Endbar Bracket */
@@ -205,9 +209,9 @@
             left: -4px;
             right: -4px;
             height: 6px;
-            background: linear-gradient(to right, #bfa15f 0%, #1c2a38 3%, #1c2a38 97%, #bfa15f 100%);
+            background: linear-gradient(to right, #a8dfb5 0%, var(--brand-orange) 3%, var(--brand-orange) 97%, #a8dfb5 100%);
             border-radius: 2px;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.15);
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
 
         /* Scroll Corner Framing Loops */
@@ -217,7 +221,7 @@
             bottom: 12px;
             left: 8px;
             right: 8px;
-            border: 1px solid rgba(191, 161, 95, 0.35);
+            border: 1px solid rgba(168, 223, 181, 0.35);
             pointer-events: none;
         }
         .corner-frame::before, .corner-frame::after {
@@ -225,7 +229,7 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            border: 1.5px solid #bfa15f;
+            border: 1.5px solid #a8dfb5;
         }
         .corner-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
         .corner-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
@@ -235,14 +239,14 @@
             width: 100%;
             height: 220px;
             object-fit: cover;
-            border: 1px solid #1c2a38;
+            border: 1px solid #a8dfb5;
             margin-bottom: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
         /* Card Content Headings */
         .card h3 {
-            color: var(--brand-orange); /* Set card heading text to orange */
+            color: var(--brand-orange); 
             font-size: 1.35rem;
             font-weight: 500;
             letter-spacing: 1px;
@@ -263,7 +267,7 @@
         .more-info {
             display: none;
             text-align: left;
-            border-top: 1px dashed rgba(191, 161, 95, 0.4);
+            border-top: 1px dashed rgba(168, 223, 181, 0.5);
             padding-top: 12px;
             margin-bottom: 16px;
         }
@@ -284,8 +288,8 @@
         /* Interactive Expansion Buttons */
         .learn-more-btn {
             background-color: transparent;
-            border: 1px solid #bfa15f;
-            color: var(--brand-orange); /* Text labeled in orange */
+            border: 1px solid #a8dfb5;
+            color: var(--brand-orange); 
             padding: 7px 20px;
             font-family: 'Times New Roman', serif;
             font-size: 0.85rem;
@@ -301,26 +305,26 @@
         .learn-more-btn:hover {
             background-color: var(--brand-orange);
             border-color: var(--brand-orange);
-            color: #fdfaf2;
+            color: #ffffff;
         }
 
-        /* Footer Accent Ribbon */
+        /* Footer Accent Ribbon themed in deep matching evergreen navy */
         .commitment-ribbon {
-            background: linear-gradient(to right, #1a2e40, #11202e);
-            color: #dcc697;
+            background: linear-gradient(to right, #1a2e22, #112117);
+            color: var(--mint-green);
             padding: 18px;
             font-size: 1.25rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-top: 25px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.18);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #333;
-            color: white;
+            background-color: #26332a;
+            color: #e2f3e7;
             text-align: center;
             padding: 30px 20px;
             margin-top: auto;
@@ -337,8 +341,8 @@
                 gap: 15px;
             }
             body {
-                background-image: none; /* Fallback flat viewport pattern for small devices */
-                background-color: #fdfbf7;
+                background-image: none; 
+                background-color: #f5faf6;
             }
         }
     </style>
