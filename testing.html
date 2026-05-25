@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Unity Mandarin?</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        /* Base Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #fcf9f2;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: linear-gradient(to right, rgba(244,233,211,0.4), rgba(255,255,255,0), rgba(244,233,211,0.4));
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Header Title */
+        h1 {
+            color: #5c0612; /* Deep Red/Burgundy */
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .divider {
+            width: 150px;
+            height: 2px;
+            background-color: #bfa15f; /* Gold accent line */
+            margin: 0 auto 50px auto;
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Individual Feature Card */
+        .card {
+            background: #ffffff;
+            border: 3px double #bfa15f; /* Elegant traditional double border */
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Image Frame */
+        .image-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border: 1px solid #bfa15f;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Card Text styling */
+        .card h2 {
+            color: #5c0612;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .card p {
+            font-family: Arial, sans-serif; /* Clean, modern readable font for description */
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Sub-banner ribbon */
+        .ribbon {
+            background-color: #1a2e40; /* Dark Blue Banner */
+            color: #bfa15f;
+            padding: 15px;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        /* Navigation Footer */
+        footer {
+            background-color: #0f1c26; /* Darker navy accent */
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            color: #bfa15f;
+            font-size: 0.9rem;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #bfa15f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>WHY UNITY MANDARIN?</h1>
+        <div class="divider"></div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="image-container">
+                    <img src="cultural-immersion.jpg" alt="Cultural Immersion">
+                </div>
+                <h2>Cultural Immersion</h2>
+                <p>Beyond language, experience culture. Our curriculum integrates authentic cultural workshops, from calligraphy to tea ceremonies, bringing the language to life.</p>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="personalized-learning.jpg" alt="Personalized Learning">
+                </div>
+                <h2>Personalized Learning</h2>
+                <p>Your goals are unique. We offer tailored lesson plans, small class sizes, and dedicated tutors who adapt to your specific learning style and pace.</p>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="expert-instructors.jpg" alt="Expert Instructors">
+                </div>
+                <h2>Expert Instructors</h2>
+                <p>Learn from the best. Our certified native-speaking teachers bring years of expertise and a passion for teaching, ensuring high-quality education and support.</p>
+            </div>
+        </div>
+
+        <div class="ribbon">
+            Our Commitment to Your Success
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Links</a>
+                <a href="#">Contact</a>
+                <a href="success.html">Success</a>
+            </div>
+            <div>
+                &copy; 2026 Unity Mandarin
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
