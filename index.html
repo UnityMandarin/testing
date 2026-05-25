@@ -8,9 +8,10 @@
     <style>
         /* --- GLOBAL STYLES --- */
         :root {
-            --brand-orange: #FF5722; /* Matches your brand orange logo text */
-            --mint-green: #D1F7DB; /* Matches your smooth mint green background banner */
-            --text-dark: #333333;
+            --brand-orange: #FF5722; 
+            --mint-green: #E8F8EE; /* Softened to a much more pleasing, premium mint pastel tint */
+            --mint-dark: #A3E2B8;
+            --text-dark: #2C3E35;
         }
 
         * {
@@ -28,48 +29,71 @@
             position: relative;
             overflow-x: hidden;
             
-            /* BASE BG COLOR: Light, pristine mint-tinted cream ivory canvas */
-            background-color: #f5faf6; 
+            /* Pleasing, balanced mint-cream ivory background canvas */
+            background-color: #FAFCFA; 
             
-            /* RE-CALIBRATED BACKDROP STYLING SYSTEM */
+            /* Soft, modern lighting glow instead of harsh lines */
             background-image: 
-                /* LAYER 1: Soft center lighting spotlight glow */
                 radial-gradient(
-                    circle at 50% 35%, 
+                    circle at 50% 30%, 
                     #ffffff 0%, 
-                    rgba(245, 250, 246, 0.6) 40%, 
-                    rgba(245, 250, 246, 0) 70%
+                    rgba(232, 248, 238, 0.4) 50%, 
+                    rgba(250, 252, 250, 0) 80%
                 );
 
-            /* PERFORMANCE CONTROLS */
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;
         }
 
-        /* --- MINT GREEN NAVIGATION BAR --- */
+        /* --- NAVIGATION HEADER --- */
         header {
             background-color: var(--mint-green); 
-            padding: 15px 50px;
+            padding: 18px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(168, 223, 181, 0.3);
+            box-shadow: 0 4px 20px rgba(163, 226, 184, 0.15);
             z-index: 10;
+            border-bottom: 1px solid rgba(163, 226, 184, 0.3);
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        /* Fixed broken logo replacement logic */
+        .logo-fallback {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            background-color: var(--brand-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 2px 8px rgba(255, 87, 34, 0.2);
+        }
+
+        .logo-text {
+            font-family: 'Georgia', serif;
             font-size: 24px;
             font-weight: bold;
             color: var(--brand-orange);
-            text-decoration: none;
         }
 
         nav a {
-            margin-left: 20px;
+            margin-left: 25px;
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
             transition: color 0.2s ease;
         }
 
@@ -80,205 +104,181 @@
         /* --- HERO SECTION --- */
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 90px 20px 70px 20px;
             background-color: transparent; 
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 52px;
+            margin-bottom: 15px;
             color: var(--brand-orange); 
-            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+            letter-spacing: -0.5px;
         }
 
         .hero p {
-            font-size: 20px;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            color: #444;
+            font-size: 19px;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
+            color: #5a6e61;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            font-style: italic;
         }
 
         .cta-button {
             background-color: var(--brand-orange); 
             color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 14px 36px;
+            border-radius: 30px;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            transition: transform 0.2s, background-color 0.3s;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.3);
         }
 
         .cta-button:hover {
             background-color: #e64a19; 
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.4);
         }
 
-        /* --- OUR APPROACH SECTION --- */
+        /* --- APPROACH SECTION --- */
         .approach-section {
-            padding: 40px 40px 60px 40px;
-            max-width: 1260px;
+            padding: 40px 40px 80px 40px;
+            max-width: 1200px;
             margin: 0 auto;
             z-index: 2;
         }
 
         .approach-section > h2 {
             text-align: center;
-            font-size: 36px;
+            font-size: 34px;
             color: var(--brand-orange); 
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .title-divider {
-            width: 180px;
-            height: 2px;
-            background-color: #a8dfb5; /* Updated divider to coordinate with mint theme */
-            margin: 0 auto 45px auto;
+            width: 120px;
+            height: 3px;
+            background-color: var(--mint-dark);
+            margin: 0 auto 50px auto;
+            border-radius: 2px;
         }
 
-        /* Three-Column Responsive Grid Layout */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
-        /* Updated Traditional Scroll Framing with Mint accents and Orange Warm Glows */
+        /* Premium Minimalist Card Design */
         .card {
             background-color: #ffffff;
-            border-left: 1px solid #c4ebd0;
-            border-right: 1px solid #c4ebd0;
-            padding: 24px 20px 22px 20px;
+            border: 1px solid rgba(163, 226, 184, 0.25);
+            border-radius: 12px;
+            padding: 24px;
             position: relative;
-            box-shadow: 0 12px 28px rgba(168, 223, 181, 0.15), 0 3px 8px rgba(0,0,0,0.02);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(44, 62, 53, 0.04);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
             text-align: center;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 22px 45px rgba(255, 87, 34, 0.12);
-        }
-
-        /* Scroll Top Endbar Bracket */
         .card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -4px;
-            right: -4px;
-            height: 6px;
-            background: linear-gradient(to right, #a8dfb5 0%, var(--brand-orange) 3%, var(--brand-orange) 97%, #a8dfb5 100%);
-            border-radius: 2px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: var(--brand-orange);
         }
 
-        /* Scroll Bottom Endbar Bracket */
-        .card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -4px;
-            right: -4px;
-            height: 6px;
-            background: linear-gradient(to right, #a8dfb5 0%, var(--brand-orange) 3%, var(--brand-orange) 97%, #a8dfb5 100%);
-            border-radius: 2px;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(44, 62, 53, 0.09);
+            border-color: rgba(163, 226, 184, 0.6);
         }
 
-        /* Scroll Corner Framing Loops */
-        .corner-frame {
-            position: absolute;
-            top: 12px;
-            bottom: 12px;
-            left: 8px;
-            right: 8px;
-            border: 1px solid rgba(168, 223, 181, 0.35);
-            pointer-events: none;
+        /* Clean Frame for Images */
+        .image-wrapper {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            background-color: #f4f9f5;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(163, 226, 184, 0.2);
         }
-        .corner-frame::before, .corner-frame::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 1.5px solid #a8dfb5;
-        }
-        .corner-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-        .corner-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
-        /* Crisp Boxed Images */
         .card img {
             width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
-            border: 1px solid #a8dfb5;
-            margin-bottom: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
-        /* Card Content Headings */
+        /* Card Text styling */
         .card h3 {
-            color: var(--brand-orange); 
-            font-size: 1.35rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+            color: var(--text-dark); 
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Georgia', serif;
         }
 
         .card p.intro-text {
             font-family: Arial, sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.45;
-            color: #2b2b2b;
-            margin-bottom: 14px;
-            padding: 0 4px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #55665c;
+            margin-bottom: 20px;
         }
 
-        /* Hidden Inner Panel Logic */
         .more-info {
             display: none;
             text-align: left;
-            border-top: 1px dashed rgba(168, 223, 181, 0.5);
-            padding-top: 12px;
-            margin-bottom: 16px;
+            border-top: 1px dashed rgba(163, 226, 184, 0.5);
+            padding-top: 16px;
+            margin-bottom: 20px;
         }
 
         .card ul {
-            text-align: left;
             padding-left: 20px;
             font-family: Arial, sans-serif;
             font-size: 0.88rem;
-            color: #444444;
+            color: #4a5c51;
         }
 
         .card li {
-            margin-bottom: 12px;
-            line-height: 1.45;
+            margin-bottom: 10px;
+            line-height: 1.5;
         }
 
-        /* Interactive Expansion Buttons */
+        /* Buttons */
         .learn-more-btn {
             background-color: transparent;
-            border: 1px solid #a8dfb5;
-            color: var(--brand-orange); 
-            padding: 7px 20px;
-            font-family: 'Times New Roman', serif;
+            border: 1px solid var(--mint-dark);
+            color: var(--text-dark); 
+            padding: 9px 24px;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
             font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 600;
             cursor: pointer;
             margin-top: auto;
             align-self: center;
-            z-index: 5;
             transition: all 0.2s ease;
         }
 
@@ -288,30 +288,33 @@
             color: #ffffff;
         }
 
-        /* Footer Accent Ribbon themed in deep matching evergreen navy */
         .commitment-ribbon {
-            background: linear-gradient(to right, #1a2e22, #112117);
-            color: var(--mint-green);
-            padding: 18px;
-            font-size: 1.25rem;
-            letter-spacing: 3px;
+            background: linear-gradient(135deg, #1E3529, #122218);
+            color: #E8F8EE;
+            padding: 20px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 8px;
             margin-top: 25px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(18, 34, 24, 0.15);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #26332a;
-            color: #e2f3e7;
+            background-color: #1E3529;
+            color: #a3bdae;
             text-align: center;
-            padding: 30px 20px;
+            padding: 35px 20px;
             margin-top: auto;
-            z-index: 10;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(163, 226, 184, 0.1);
         }
 
-        /* --- RESPONSIVE MOBILE ADJUSTMENTS --- */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 800px) {
             .grid {
                 grid-template-columns: 1fr;
@@ -319,10 +322,10 @@
             header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 20px;
             }
-            body {
-                background-image: none; 
-                background-color: #f5faf6;
+            .hero h1 {
+                font-size: 38px;
             }
         }
     </style>
@@ -330,9 +333,9 @@
 <body>
 
     <header>
-        <a href="#" class="logo-container" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
-            <img src="logo.png" alt="Unity Mandarin Center Logo" style="height: 50px; width: auto; border-radius: 50%;">
-            <span class="logo-text" style="font-family: 'Georgia', serif; font-size: 24px; font-weight: bold; color: var(--brand-orange);">Unity Mandarin Center</span>
+        <a href="#" class="logo-container">
+            <div class="logo-fallback">U</div>
+            <span class="logo-text">Unity Mandarin Center</span>
         </a>
         <nav>
             <a href="#">Home</a>
@@ -354,8 +357,9 @@
         
         <div class="grid">
             <div class="card">
-                <div class="corner-frame"></div>
-                <img src="linguistic.jpg" alt="Linguistic Immersion">
+                <div class="image-wrapper">
+                    <img src="linguistic.jpg" alt="Linguistic Immersion" onerror="this.style.display='none'; this.parentNode.innerText='Linguistic Image Here'">
+                </div>
                 <h3>Linguistic Immersion</h3>
                 <p class="intro-text">Language is best learned when it is lived. Instead of rigid memorization and grammar drills, we focus on natural acquisition in a supportive, fully immersive environment.</p>
                 
@@ -370,8 +374,9 @@
             </div>
 
             <div class="card">
-                <div class="corner-frame"></div>
-                <img src="academic.jpg" alt="Academic Support">
+                <div class="image-wrapper">
+                    <img src="academic.jpg" alt="Academic Support" onerror="this.style.display='none'; this.parentNode.innerText='Academic Image Here'">
+                </div>
                 <h3>Academic Support</h3>
                 <p class="intro-text">Balancing schoolwork and language learning can be challenging. We provide a dedicated, quiet environment where students can complete their homework with confidence.</p>
                 
@@ -386,8 +391,9 @@
             </div>
 
             <div class="card">
-                <div class="corner-frame"></div>
-                <img src="cultural.jpg" alt="Cultural Creative">
+                <div class="image-wrapper">
+                    <img src="cultural.jpg" alt="Cultural Creative" onerror="this.style.display='none'; this.parentNode.innerText='Cultural Image Here'">
+                </div>
                 <h3>Cultural Creative</h3>
                 <p class="intro-text">True fluency goes hand-in-hand with cultural understanding. We bring the vibrant traditions of the Chinese-speaking world to life by connecting language learning directly to creative expression.</p>
                 
