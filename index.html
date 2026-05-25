@@ -14,9 +14,8 @@
             padding: 0;
         }
         
-        body {
+       body {
             font-family: 'Times New Roman', Times, Georgia, serif;
-            background-color: #f6ebd4;
             color: #1a1a1a;
             display: flex;
             flex-direction: column;
@@ -24,17 +23,42 @@
             position: relative;
             overflow-x: hidden;
             
-            /* Clean Center Background with Premium Silk Drapery Effects ONLY on the Sides */
+            /* BASE BG COLOR: Plain, clean, premium ivory canvas */
+            background-color: #fdfbf7; 
+            
+            /* EXPANDED SYSTEM: Multi-Layered Editorial Layout Styles */
             background-image: 
-                linear-gradient(to right, 
-                    rgba(215, 188, 134, 0.9) 0%, 
-                    rgba(240, 222, 180, 0.6) 8%, 
-                    rgba(253, 251, 246, 0) 18%, 
-                    rgba(253, 251, 246, 0) 82%, 
-                    rgba(240, 222, 180, 0.6) 92%, 
-                    rgba(215, 188, 134, 0.9) 100%),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0C13.432 0 0 13.432 0 30s13.432 30 30 30 30-13.432 30-30S46.568 0 30 0zm0 56C15.664 56 4 44.336 4 30S15.664 4 30 4s26 11.664 26 26-11.664 26-26 26zm-12-26c0-6.627 5.373-12 12-12s12 5.373 12 12-5.373 12-12 12-12-5.373-12-12z' fill='%23e4d2aa' fill-opacity='0.15'/%3E%3C/svg%3E");
-            background-color: #fdfbf7; /* Plain, crisp luxury cream center */
+                /* LAYER 1: Soft center studio lighting spotlight glow (makes cards pop) */
+                radial-gradient(
+                    circle at 50% 35%, 
+                    #ffffff 0%, 
+                    rgba(253, 251, 247, 0.5) 40%, 
+                    rgba(253, 251, 247, 0) 70%
+                ),
+                /* LAYER 2: Explicit Left-Side Silk Ribbon Curtain & Shadow Creases */
+                linear-gradient(
+                    to right, 
+                    #cca766 0%,    /* Deep golden edge boundary */
+                    #dcc08a 2%,    /* High-contrast fabric highlight */
+                    #cca766 3.5%,  /* First drape shadow dip */
+                    #ebd9b4 6%,    /* Soft reflection ridge */
+                    #f5ebd4 10%,   /* Transition smoothing slope */
+                    rgba(253, 251, 247, 0) 15% /* Crisp fade out into the plain center */
+                ),
+                /* LAYER 3: Explicit Right-Side Silk Ribbon Curtain & Shadow Creases */
+                linear-gradient(
+                    to left, 
+                    #cca766 0%,    /* Deep golden edge boundary */
+                    #dcc08a 2%,    /* High-contrast fabric highlight */
+                    #cca766 3.5%,  /* First drape shadow dip */
+                    #ebd9b4 6%,    /* Soft reflection ridge */
+                    #f5ebd4 10%,   /* Transition smoothing slope */
+                    rgba(253, 251, 247, 0) 15% /* Crisp fade out into the plain center */
+                );
+
+            /* PERFORMANCE VALUES: Locks graphics in place during scroll */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             background-attachment: fixed;
         }
 
